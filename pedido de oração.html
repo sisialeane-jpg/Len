@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Oração</title>
+    <link rel="stylesheet" href="style NAO MECHA.css">
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; text-align: center; }
+        .header-pag { background-color: #112233; color: white; padding: 20px; }
+        .container { max-width: 500px; margin: 40px auto; padding: 30px; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        /* Estilo do Formulário */
+        label { display: block; margin: 15px 0 5px; font-weight: bold; text-align: left; }
+        input, select, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 16px; font-family: Arial, sans-serif; }
+        textarea { resize: vertical; height: 120px; }
+        
+        /* Botão Enviar */
+        .btn-whatsapp { display: block; width: 100%; padding: 15px; background-color: #25D366; color: white; border: none; border-radius: 4px; font-size: 18px; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.2s; }
+        .btn-whatsapp:hover { background-color: #128C7E; }
+        .btn-voltar { display: inline-block; margin-top: 20px; color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="header-pag">
+        <h1>Pedido de Oração</h1>
+        <p>Conte conosco para interceder por sua vida</p>
+    </div>
+
+    <div class="container">
+        <label for="nome">Seu Nome:</label>
+        <input type="text" id="nome" placeholder="Digite seu nome (ou deixe em branco se preferir anônimo)">
+
+        <label for="area">Área do Pedido:</label>
+        <select id="area">
+            <option value="Família">👪 Família</option>
+      
+        </select>
+
+        <label for="mensagem">Escreva seu pedido abaixo:</label>
+        <textarea id="mensagem" placeholder="Descreva aqui o motivo pelo qual quer que a igreja ore..."></textarea>
+
+        <button class="btn-whatsapp" onclick="enviarPedido()">🙏 Enviar Pedido para o WhatsApp</button>
+
+        <a href="index.html" class="btn-voltar">⬅ Voltar para o Início</a>
+    </div>
+
+    <script>
+        // Altere para o número real de WhatsApp do Pastor ou Grupo de Intercessão (DDI + DDD + Número)
+        const numeroWhatsOracao = "+55 81 9496-1391"; 
+
+        function enviarPedido() {
+            let nome = document.getElementById('nome').value.trim();
+            const area = document.getElementById('area').value;
+            const mensagem = document.getElementById('mensagem').value.trim();
+
+            // Validação simples: o pedido não pode ser enviado em branco
+            if (!mensagem) {
+                alert("Por favor, escreva o seu pedido de oração.");
+                return;
+            }
+
+            // Se o nome não for preenchido, envia como anônimo
+            if (nome === "") {
+                nome = "Anônimo";
+            }
+
+            // Monta o texto que vai chegar no WhatsApp da igreja de forma bem organizada
+            const textoMensagem = ` *NOVO PEDIDO DE ORAÇÃO*\n\n` +
+                                  `👤 *Quem pediu:* ${nome}\n` +
+                                   `*Área do pedido:* ${area}\n\n` +
+                                  `📝 *Pedido:* \n"${mensagem}"\n\n` +
+                                  `Estou enviando através do site da igreja para que o ministério de intercessão ore por mim.`;
+            
+            // Codifica o texto para formato de link
+            const textoCodificado = encodeURIComponent(textoMensagem);
+
+            // Cria o link final do WhatsApp
+            const linkWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsOracao}&text=${textoCodificado}`;
+
+            // Abre o WhatsApp
+            window.open(linkWhatsApp, '_blank');
+        }
+    </script>
+
+</body>
+</html>
