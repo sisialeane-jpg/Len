@@ -521,25 +521,25 @@
 </div>
 <h3>CULTOS DA IGREJA<h3>
     <div class="carrossel-container">
-<!--1FT CULTO--><div class="slide"><img src="adultos.jpg/fotos01.jpg"alt="Foto da Igreja 2">
+<!--1FT CULTO--><div class="slide"><img src="fotos01.jpg"alt="Foto da Igreja 2">
         </div>
-        <div class="slide"><img src="adultos.jpg/fotos02.jpg"alt="Foto da Igreja 2">
+        <div class="slide"><img src="fotos02.jpg"alt="Foto da Igreja 2">
         </div>
-        <div class="slide"><img src="adultos.jpg/fotos03.jpg"alt="Foto da Igreja 2">
+        <div class="slide"><img src="fotos03.jpg"alt="Foto da Igreja 2">
         </div>
-        <div class="slide"><img src="adultos.jpg/fotos04.jpg"alt="Foto da Igreja 2">
+        <div class="slide"><img src="fotos04.jpg"alt="Foto da Igreja 2">
         </div>
-        <div class="slide"><img src="adultos.jpg/fotos05.jpg"alt="Foto da Igreja 2">
+        <div class="slide"><img src="fotos05.jpg"alt="Foto da Igreja 2">
         </div>
-        <div class="slide"><img src="adultos.jpg/fotos06.jpg"alt="Foto da Igreja 2">
+        <div class="slide"><img src="fotos06.jpg"alt="Foto da Igreja 2">
         </div>
-        <div class="slide"><img src="adultos.jpg/fotos07.jpg"alt="Foto da Igreja 2">
+        <div class="slide"><img src="fotos07.jpg"alt="Foto da Igreja 2">
         </div>
-        <div class="slide"><img src="adultos.jpg/fotos08.jpg"alt="Foto da Igreja 2">
+        <div class="slide"><img src="fotos08.jpg"alt="Foto da Igreja 2">
         </div>
-        <div class="slide"><img src="adultos.jpg/fotos09.jpg"alt="Foto da Igreja 2">
+        <div class="slide"><img src="fotos09.jpg"alt="Foto da Igreja 2">
         </div>
-        <div class="slide"><img src="adultos.jpg/fotos10.jpg"alt="Foto da Igreja 2">
+        <div class="slide"><img src="fotos10.jpg"alt="Foto da Igreja 2">
         </div>
 
 <img src="Seta1.png" class="seta seta-esquerda" onclick="mudarSlide(-1)" alt="Esquerda">
@@ -654,4 +654,7 @@
 
         function mostrarSlides(n) {
             let i;
-            let slides = document.getElementsByClassName
+            let slides = document.getElementsByClassName("slide");
+            
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = sli
