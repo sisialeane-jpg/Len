@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGREJA PRESBITERIANA DE BELO JARDIM</title>
+<link rel="stylesheet" href="style NAO MECHA.css">
+    <style>
+        .carrossel-bloco-dois {
+        position: relative;
+        max-width: 600px;
+        height: 350px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(17, 34, 51, 0.15);
+        background-color: #112233;
+        font-family: Arial, sans-serif;
+    }
+
+    .lista-slides-dois {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .item-slide-dois {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+        z-index: 1;
+    }
+
+    /* Força apenas o slide ativo a aparecer */
+    .item-slide-dois.ativo-dois {
+        opacity: 1 !important;
+        z-index: 2 !important;
+    }
+
+    .item-slide-dois img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .legenda-slide-dois {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 40px 20px 20px 20px;
+        background: linear-gradient(to top, rgba(17, 34, 51, 0.95) 0%, rgba(17, 34, 51, 0) 100%);
+        color: #ffffff;
+        box-sizing: border-box;
+        z-index: 3;
+        text-align: center;
+    }
+
+    .legenda-slide-dois h3 {
+        margin: 0 0 5px 0;
+        font-size: 18px;
+        color: #00ffd0;
+    }
+
+    .legenda-slide-dois p {
+        margin: 0;
+        font-size: 13px;
+        color: #e2e8f0;
+    }
+
+    /* === FORMATAÇÃO PERFEITA DAS SETAS LATERAIS === */
+    .seta-dois {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.3) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        width: 42px !important;
+        height: 42px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer;
+        z-index: 10 !important;
+        font-size: 16px !important;
+        font-weight: bold;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .seta-esq-dois { left: 15px !important; right: auto !important; }
+    .seta-dir-dois { right: 15px !important; left: auto !important; }
+
+    /* Bolinhas Indicadoras */
+    .pontos-carrossel-dois {
+        position: absolute;
+        bottom: 15px;
+        right: 20px;
+        display: flex;
+        gap: 8px;
+        z-index: 5;
+    }
+
+    .ponto-dois {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .ponto-dois.ativo-pnt2 {
+        background-color: #00ffd0;
+        width: 20px;
+        border-radius: 4px;
+    }
+
+    @media (max-width: 480px) {
+        .carrossel-bloco-dois { height: 280px; margin: 0 10px; }
+    }
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #f8f9fa; }
+        .navbar { background-color: #112233; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; left: 0; box-sizing: border-box; z-index: 1000; }
+        .logo { font-weight: bold; font-size: 20px; }
+        .menu-toggle { cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; z-index: 1001; }
+        .menu-toggle .bar { height: 3px; width: 100%; background-color: white; border-radius: 2px; }
+        .menu-lateral { position: fixed; top: 0; right: -100%; width: 300px; height: 100vh; background-color: #1a2e40; padding-top: 70px; transition: 0.4s ease; z-index: 999; }
+        .menu-lateral.active { right: 0; }
+        .menu-lateral a { display: block; padding: 18px 25px; color: #ecf0f1; text-decoration: none; font-size: 16px; border-bottom: 1px solid #243b53; }
+        .menu-lateral a:hover { background-color: #243b53; color: #bfa15f; }
+        .close-btn { position: absolute; top: 15px; right: 20px; color: white; font-size: 35px; cursor: pointer; }
+        .conteudo { padding: 100px 20px; text-align: center; }
+        /* Estilos Gerais (Estilo IPRB do vídeo) */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Barra de Topo Azul Escuro */
+        .navbar {
+            background-color: #112233; /* Azul escuro igual ao do vídeo */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Ícone do Hambúrguer */
+        .menu-toggle {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            z-index: 1001;
+        }
+
+        .menu-toggle .bar {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        /* Menu Lateral Oculto (Slide-in) */
+        .menu-lateral {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Começa escondido na direita */
+            width: 280px;
+            height: 100vh;
+            background-color: #1a2e40;
+            padding-top: 80px;
+            transition: 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+
+        /* Quando o menu estiver ativo */
+        .menu-lateral.active {
+            right: 0;
+        }
+
+        /* Links do Menu */
+        .menu-lateral a {
+            display: block;
+            padding: 15px 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            border-bottom: 1px solid #253d54;
+            transition: 0.2s;
+        }
+
+        .menu-lateral a:hover {
+            background-color: #253d54;
+            padding-left: 35px; /* Efeito sutil ao passar o mouse */
+        }
+
+        /* Botão de Fechar dentro do menu */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+       
+   </style>
+   </head>
+ <body>
+ 
+    <nav class="navbar">
+        <div class="logo">IGREJA RENOVAÇÃO</div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <div class="menu-lateral" id="nav-menu">
+        <div class="close-btn" id="close-menu">&times;</div>
+        
+        <a href="#">Início</a>
+        
+        <a href="quem-somos.html">Quem Somos</a>
+        
+        <a href="">Ministérios</a>
+        
+        <a href="#">Agenda da Igreja</a>
+        
+        <a href="#">Pedidos de Oração</a>
+        
+        <a href="Dizimo-e-ofertas.html">Dízimos e Ofertas</a>
+        
+        <a href="#">Contato</a>
+        
+    </div>
+</body>
+   <style>
+        /* ConfiguraÃ§Ãµes Gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        header {
+            background-color:#333;
+            color: white;
+            padding: 20px;
+        }
+
+        /* --- Estilo do Carrossel (Fotos Rolando) --- */
+ /* --- CONFIGURAÃ‡ÃƒO FORÃ‡ADA DO CARROSSEL --- */
+.carrossel-container {
+    position: relative !important; /* O '!important' forÃ§a o navegador a aceitar o comando */
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.slides {
+    display: flex;
+    width: 100%;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block; /* Remove espaÃ§os invisÃ­veis abaixo da foto */
+}
+
+/* --- CONFIGURAÃ‡ÃƒO FORÃ‡ADA DAS SETAS --- */
+.seta {
+    cursor: pointer;
+    position: absolute !important; /* ForÃ§a a seta a desgrudar do chÃ£o e flutuar */
+    top: 25% !important;           /* ForÃ§a a seta a ir para a metade da foto */
+    transform: translateY(-50%) !important; /* Centraliza perfeitamente na vertical */
+    width: 50px;  
+    height: 50px;
+    z-index: 999 !important;       /* ForÃ§a a ficar na frente de qualquer foto */
+    transition: 0.2s;
+}
+
+.seta:hover {
+    transform: translateY(-50%) scale(1.1) !important;
+    opacity: 0.8;
+}
+
+/* Alinhamento nas laterais da foto */
+.seta-esquerda { 
+    left: 15px !important; 
+}
+
+.seta-direita { 
+    right: 15px !important; 
+}
+        .caixa-destaque h2 {
+            margin-top: 0;
+            color: #000;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+            /* --- 1. BARRA SUPERIOR MARROM (NOVA) --- */
+        .barra-topo {
+            background-color: #a0784c; 
+            padding: 8px 20px;
+            display: flex;
+            justify-content: flex-end; 
+            gap: 15px; 
+        }
+        .barra-topo a {
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* --- 2. CABEÃ‡ALHO PRINCIPAL AZUL (NOVA) --- */
+        .cabecalho-principal {
+            background-color: #0d2343; 
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+        }
+        .logo-igreja {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-align: left;
+        }
+        .logo-igreja img {
+            height: 50px; 
+        }
+        .logo-texto h1 {
+            font-size: 14px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .logo-texto p {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .botoes-direita {
+            display: flex;
+            gap: 15px;
+        }
+        .botao-topo {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* --- 3. CARROSSEL E SETAS (O que deu certo antes) --- */
+        .carrossel-container {
+            position: relative !important; 
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .slide {
+            display: none;
+            width: 100%;
+        }
+        .slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block; 
+        }
+        .seta {
+            cursor: pointer;
+            position: absolute !important; 
+            top: 25% !important;           
+            transform: translateY(-50%) !important; 
+            width: 50px;  
+            height: 50px;
+            z-index: 999 !important;       
+            transition: 0.2s;
+        }
+        .seta:hover {
+            transform: translateY(-50%) scale(1.1) !important;
+            opacity: 0.8;
+        }
+        .seta-esquerda { left: 15px !important; }
+        .seta-direita { right: 15px !important; }
+
+        /* --- 4. QUADRADO DESTAQUES --- */
+        .caixa-destaque {
+            border: 2px solid #333;
+            border-radius: 15px; 
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<div style="background-color: #112233; min-height: 200px; padding: 20px 15px; display: flex; align-items: center; justify-content: flex-start; gap: 15px; width: 100%; box-sizing: border-box; overflow: visible;">
+    
+    <img src="Logo.png" alt="Logo" 
+         style="width: 130ppx; height: 130px; object-fit: cover; border-radius: 50% !important; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); flex-shrink: 0; display: block;">
+    
+    <div style="display: flex; flex-direction: column; text-align: left;">
+        <h2 style="color: #ffffff; font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; margin: 0; line-height: 1.3; text-transform: uppercase; letter-spacing: 8.0px;">
+            Igreja Presbiteriana Renovada
+        </h2>
+        <span style="font-family: Arial, sans-serif; font-size: 14px; color: #00ffd0; font-weight: 500; margin-top: 3px;">
+            de Belo Jardim
+        </span>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+<body>
+
+    <header>
+       <fieldset>
+           
+     <legend><h1>Bem-vindo a Nossa Igreja</h1><legend>
+        <p>Um lugar de paz, e comunhao</p>
+        </fieldset>
+    </header>
+    <h3>RENOVA KIDS<h3>
+<div class="container-geral-carrossel2" style="margin-top: 40px; margin-bottom: 40px;">
+    
+    <div class="carrossel-bloco-dois">
+        
+        <button class="seta-dois seta-esq-dois" onclick="navegarSlideDois(-1)">&#10094;</button>
+
+        <ul class="lista-slides-dois">
+            
+            <li class="item-slide-dois ativo-dois">
+                <img src="n" alt="Foto Missão 1">
+                <div class="legenda-slide-dois">
+                    <h3>Campo Missionário MISPA</h3>
+                    <p>Trabalho de evangelização e apoio comunitário em Belo Jardim.</p>
+                </div>
+            </li>
+
+            <li class="item-slide-dois">
+                <img src=".jpg" alt="Foto Missão 2">
+                <div class="legenda-slide-dois">
+                    <h3>Projetos com Crianças</h3>
+                    <p>Instruindo e abençoando a nova geração com amor e cuidado.</p>
+                </div>
+            </li>
+
+            <li class="item-slide-dois">
+                <img src="foto Aqui" alt="Foto Missão 3">
+                <div class="legenda-slide-dois">
+                    <h3>Ações Sociais</h3>
+                    <p>Amor em movimento através de doações e visitas.</p>
+                </div>
+            </li>
+
+        </ul>
+
+        <button class="seta-dois seta-dir-dois" onclick="navegarSlideDois(1)">&#10095;</button>
+
+        <div class="pontos-carrossel-dois">
+            <span class="ponto-dois ativo-pnt2" onclick="irParaSlideDois(0)"></span>
+            <span class="ponto-dois" onclick="irParaSlideDois(1)"></span>
+            <span class="ponto-dois" onclick="irParaSlideDois(2)"></span>
+        </div>
+
+    </div>
+</div>
+<h3>CULTOS DA IGREJA<h3>
+    <div class="carrossel-container">
+<!--1FT CULTO--><div class="slide"><img src="fotos01.jpg"alt="Foto da Igreja 2">
+        </div>
+        <div class="slide"><img src="fotos02.jpg"alt="Foto da Igreja 2">
+        </div>
+        <div class="slide"><img src="fotos03.jpg"alt="Foto da Igreja 2">
+        </div>
+        <div class="slide"><img src="fotos04.jpg"alt="Foto da Igreja 2">
+        </div>
+        <div class="slide"><img src="fotos05.jpg"alt="Foto da Igreja 2">
+        </div>
+        <div class="slide"><img src="fotos06.jpg"alt="Foto da Igreja 2">
+        </div>
+        <div class="slide"><img src="fotos07.jpg"alt="Foto da Igreja 2">
+        </div>
+        <div class="slide"><img src="fotos08.jpg"alt="Foto da Igreja 2">
+        </div>
+        <div class="slide"><img src="fotos09.jpg"alt="Foto da Igreja 2">
+        </div>
+        <div class="slide"><img src="fotos10.jpg"alt="Foto da Igreja 2">
+        </div>
+
+<img src="Seta1.png" class="seta seta-esquerda" onclick="mudarSlide(-1)" alt="Esquerda">
+<img src="Seta2.png" class="seta seta-direita" onclick="mudarSlide(1)" alt="Direita">
+
+
+<!-------NAO MEXA===---->
+<section>
+        <h2>horas do culto na igreja presbiteriana Renovada de belo jardim.</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>horas</th>
+                        <th>cultos</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7h</td>
+                        <td>Domingo</td>
+                <tr>
+                    <td>7h</td>
+                    <td>TerÃ§a</td>
+                </tr>
+                <tr>
+                    <td>7h</td>
+                    <td>Quinta</td>
+                </tr>
+                <tr>
+                    <td>3h</td>
+                    <td>Sabado</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td
+                            colspan="2">FAÃ‡A-NOS UMA VISITA,E QUE A PRESENÃ‡A DO SENHOR TE ACOMPANHE.
+                        </td>
+                    </tr>
+</tfoot>
+</table>
+</section>
+            
+<script>
+        const todosSlides2 = document.querySelectorAll('.item-slide-dois');
+    const todasBolinhas2 = document.querySelectorAll('.ponto-dois');
+    let posicaoAtual2 = 0;
+    let cronometroCarrossel2;
+
+    function renderizarSlideDois(novoIndice) {
+        todosSlides2[posicaoAtual2].classList.remove('ativo-dois');
+        todasBolinhas2[posicaoAtual2].classList.remove('ativo-pnt2');
+
+        posicaoAtual2 = (novoIndice + todosSlides2.length) % todosSlides2.length;
+
+        todosSlides2[posicaoAtual2].classList.add('ativo-dois');
+        todasBolinhas2[posicaoAtual2].classList.add('ativo-pnt2');
+    }
+
+    function avançoAutomatico2() {
+        renderizarSlideDois(posicaoAtual2 + 1);
+    }
+
+    function ligarTemporizador2() {
+        cronometroCarrossel2 = setInterval(avançoAutomatico2, 4000);
+    }
+
+    function reiniciarTemporizador2() {
+        clearInterval(cronometroCarrossel2);
+        ligarTemporizador2();
+    }
+
+    function navegarSlideDois(direcao) {
+        renderizarSlideDois(posicaoAtual2 + direcao);
+        reiniciarTemporizador2();
+    }
+
+    function irParaSlideDois(indiceAlvo) {
+        renderizarSlideDois(indiceAlvo);
+        reiniciarTemporizador2();
+    }
+
+    ligarTemporizador2();
+    const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const closeMenu = document.getElementById('close-menu');
+
+        // Abrir Menu
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.add('active');
+        });
+
+        // Fechar Menu no botão X
+        closeMenu.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+
+        // Fechar Menu ao clicar em qualquer link
+        const links = document.querySelectorAll('.menu-lateral a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        let slideIndex = 1;
+        mostrarSlides(slideIndex);
+
+        // FunÃ§Ã£o para quando clicar nas setas
+        function mudarSlide(n) {
+            mostrarSlides(slideIndex += n);
+        }
+
+        function mostrarSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            
+            slides[slideIndex-1].style.display = "block";  
+        }
+
+        // Opcional: Faz as fotos mudarem sozinhas a cada 5 segundos
+        setInterval(function() {
+            mudarSlide(1);
+        }, 3000);
+    </script>
+    <footer>
+        Copyright 2026, todos os direitos reservados.
+    </footer>
+ 
+        
+
+</body>
+</html>
