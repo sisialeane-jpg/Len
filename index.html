@@ -7,7 +7,10 @@
  
     <title>IGREJA PRESBITERIANA DE BELO JARDIM</title>
 <link rel="stylesheet" href="style NAO MECHA.css">
-    <style>
+</head>
+
+  <style>
+  /*=========slides 1===========*/
         .carrossel-bloco-dois {
         position: relative;
         max-width: 600px;
@@ -147,8 +150,149 @@
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
         }
+/*--=========FINAL DO 1SLIDES=------------*/
+    /*=========slides 2===========*/
+ .carrossel-bloco-tres {
+    position: relative;
+    max-width: 600px;
+    height: 350px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: #112233;
+}
 
-        /* Barra de Topo Azul Escuro */
+.lista-slides-tres {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+}
+
+.item-slide-tres {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.item-slide-tres.ativo-tres {
+    opacity: 1;
+    position: relative;
+}
+
+.item-slide-tres img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.legenda-tres {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(17, 34, 51, 0.9));
+    padding: 20px;
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Estilo das Setas do Carrossel 2 */
+.seta-tres {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+}
+
+.seta-esq-tres { left: 15px; }
+.seta-dir-tres { right: 15px; } 
+/*--=========FINAL DO 2SLIDES=------------*/
+/*=====SLIDES 3=====*/
+.carrossel-bloco-quatro {
+    position: relative;
+    max-width: 600px;
+    height: 350px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: #112233;
+}
+
+.lista-slides-quatro {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+}
+
+.item-slide-quatro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.item-slide-quatro.ativo-quatro {
+    opacity: 1;
+    position: relative;
+}
+
+.item-slide-quatro img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.legenda-quatro {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(17, 34, 51, 0.9));
+    padding: 20px;
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Estilo das Setas do Carrossel 3 */
+.seta-quatro {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+}
+
+.seta-esq-quatro { left: 15px; }
+.seta-dir-quatro { right: 15px; }
+/*=====FIM DO 3SLIDES=====*/
+
+ /* =======Barra de Topo Azul Escuro ====*/
         .navbar {
             background-color: #112233; /* Azul escuro igual ao do vídeo */
             color: white;
@@ -167,7 +311,7 @@
             font-weight: bold;
             font-size: 18px;
         }
-
+/*=========fim==================*/
         /* Ícone do Hambúrguer */
         .menu-toggle {
             cursor: pointer;
@@ -232,41 +376,7 @@
             cursor: pointer;
         }
        
-   </style>
-   </head>
- <body>
- 
-    <nav class="navbar">
-        <div class="logo"></div>
-        
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </nav>
-
-    <div class="menu-lateral" id="nav-menu">
-        <div class="close-btn" id="close-menu">&times;</div>
-        
-        <a href="#">Início</a>
-        
-        <a href="quem-somos.html">Quem Somos</a>
-        
-        <a href="">Ministérios</a>
-        
-        <a href="#">Agenda da Igreja</a>
-        
-        <a href="#">Pedidos de Oração</a>
-        
-        <a href="Dizimo-e-ofertas.html">Dízimos e Ofertas</a>
-        
-        <a href="#">Contato</a>
-        
-    </div>
-</body>
-   <style>
-        /* ConfiguraÃ§Ãµes Gerais */
+               /* ConfiguraÃ§Ãµes Gerais */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -281,59 +391,7 @@
             padding: 20px;
         }
 
-        /* --- Estilo do Carrossel (Fotos Rolando) --- */
- /* --- CONFIGURAÃ‡ÃƒO FORÃ‡ADA DO CARROSSEL --- */
-.carrossel-container {
-    position: relative !important; /* O '!important' forÃ§a o navegador a aceitar o comando */
-    max-width: 800px;
-    margin: 20px auto;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
 
-.slides {
-    display: flex;
-    width: 100%;
-}
-
-.slide {
-    display: none;
-    width: 100%;
-}
-
-.slide img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    display: block; /* Remove espaÃ§os invisÃ­veis abaixo da foto */
-}
-
-/* --- CONFIGURAÃ‡ÃƒO FORÃ‡ADA DAS SETAS --- */
-.seta {
-    cursor: pointer;
-    position: absolute !important; /* ForÃ§a a seta a desgrudar do chÃ£o e flutuar */
-    top: 25% !important;           /* ForÃ§a a seta a ir para a metade da foto */
-    transform: translateY(-50%) !important; /* Centraliza perfeitamente na vertical */
-    width: 50px;  
-    height: 50px;
-    z-index: 999 !important;       /* ForÃ§a a ficar na frente de qualquer foto */
-    transition: 0.2s;
-}
-
-.seta:hover {
-    transform: translateY(-50%) scale(1.1) !important;
-    opacity: 0.8;
-}
-
-/* Alinhamento nas laterais da foto */
-.seta-esquerda { 
-    left: 15px !important; 
-}
-
-.seta-direita { 
-    right: 15px !important; 
-}
         .caixa-destaque h2 {
             margin-top: 0;
             color: #000;
@@ -399,42 +457,6 @@
             font-size: 18px;
         }
 
-        /* --- 3. CARROSSEL E SETAS (O que deu certo antes) --- */
-        .carrossel-container {
-            position: relative !important; 
-            max-width: 800px;
-            margin: 20px auto;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        .slide {
-            display: none;
-            width: 100%;
-        }
-        .slide img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            display: block; 
-        }
-        .seta {
-            cursor: pointer;
-            position: absolute !important; 
-            top: 25% !important;           
-            transform: translateY(-50%) !important; 
-            width: 50px;  
-            height: 50px;
-            z-index: 999 !important;       
-            transition: 0.2s;
-        }
-        .seta:hover {
-            transform: translateY(-50%) scale(1.1) !important;
-            opacity: 0.8;
-        }
-        .seta-esquerda { left: 15px !important; }
-        .seta-direita { right: 15px !important; }
-
         /* --- 4. QUADRADO DESTAQUES --- */
         .caixa-destaque {
             border: 2px solid #333;
@@ -446,9 +468,9 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
     </style>
-</head>
-
-<div style="background-color: #112233; min-height: 200px; padding: 20px 15px; display: flex; align-items: center; justify-content: flex-start; gap: 15px; width: 100%; box-sizing: border-box; overflow: visible;">
+    
+ <body>
+     <div style="background-color: #112233; min-height: 200px; padding: 20px 15px; display: flex; align-items: center; justify-content: flex-start; gap: 15px; width: 100%; box-sizing: border-box; overflow: visible;">
     
     <img src="Logo.png" alt="Logo" 
          style="width: 130ppx; height: 130px; object-fit: cover; border-radius: 50% !important; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); flex-shrink: 0; display: block;">
@@ -467,8 +489,36 @@
 </div>
 
 </div>
-<body>
+ <!-------MENU AMBURGUER------------>
+  <nav class="navbar">
+        <div class="logo"></div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
 
+    <div class="menu-lateral" id="nav-menu">
+        <div class="close-btn" id="close-menu">&times;</div>
+        
+        <a href="#">Início</a>
+        
+        <a href="quem-somos.html">Quem Somos</a>
+        
+        <a href="">Ministérios</a>
+        
+        <a href="#">Agenda da Igreja</a>
+        
+        <a href="#">Pedidos de Oração</a>
+        
+        <a href="Dizimo-e-ofertas.html">Dízimos e Ofertas</a>
+        
+        <a href="#">Contato</a>
+        
+    </div>
+   <!------=========================-------->
     <header>
        <fieldset>
            
@@ -476,7 +526,8 @@
         <h3>Um lugar de renovo, avivamento e milagres</h3>
         </fieldset>
     </header>
-    <h3>RENOVA KIDS<h3>
+    <h3>RENOVA KIDS<h3> 
+<!------======SLIDES 1============-------->
 <div class="container-geral-carrossel2" style="margin-top: 40px; margin-bottom: 40px;">
     
     <div class="carrossel-bloco-dois">
@@ -521,28 +572,75 @@
 
     </div>
 </div>
+   <!------==========f===============-------->
+   
 <h3>CULTOS DA IGREJA<h3>
-      <!---1FT CULTO--->
-    <div class="carrossel-container">
-    <div class="slide"><img src="fotos01.jpg"alt="Foto da Igreja 2">
-        </div>
-    <div class="slide"><img src="fotos02.jpg"alt="Foto da Igreja">
-    </div>
-        <div class="slide"><img src="fotos03.jpg"alt="Foto da Igreja">
-        </div>
-    <div class="slide"><img src="fotos04.jpg"alt="Foto da Igreja">
-    </div>
-    <div class="slide"><img src="fotos05.jpg"alt="Foto da Igreja">
-    </div>
-    <div class="slide"><img src="fotos06.jpg"alt="Foto da Igreja">
-    </div>
-    <div class="slide"><img src="fotos07.jpg"alt="Foto da Igreja">
-    </div>
+   <!------=======SLIDES 2=============-------->
+   <section>
+    <h3>MAIS PROJETOS</h3>
+    <div class="container-geral-carrossel3" style="margin-top: 40px; margin-bottom: 40px;">
+        <div class="carrossel-bloco-tres">
+            <button class="seta-tres seta-esq-tres" onclick="navegarSlideTres(-1)">&#10094;</button>
+            
+            <ul class="lista-slides-tres">
+                <li class="item-slide-tres ativo-tres">
+                    <img src="imagem3.png" alt="Foto Nova 1">
+                    <div class="legenda-tres">
+                        <h3>Novo Trabalho</h3>
+                        <p>Descrição da foto do segundo carrossel aqui.</p>
+                    </div>
+                </li>
+                
+                <li class="item-slide-tres">
+                    <img src="imagem4.png" alt="Foto Nova 2">
+                    <div class="legenda-tres">
+                        <h3>Apoio à Comunidade</h3>
+                        <p>Mais uma descrição bem bonita para o seu site.</p>
+                    </div>
+                </li>
+            </ul>
 
-<img src="Seta1.png" class="seta seta-esquerda" onclick="mudarSlide(-1)" alt="Esquerda">
-<img src="Seta2.png" class="seta seta-direita" onclick="mudarSlide(1)" alt="Direita">     
+            <button class="seta-tres seta-dir-tres" onclick="navegarSlideTres(1)">&#10095;</button>
+        </div>
+    </div>
+</section>
+<!------====fimm slides 2==========-------->
+    
+<!-----========SLIDES 3==============--->
+<section>
+    <h3>TERCEIRO BLOCO DE FOTOS</h3>
+    <div class="container-geral-carrossel4" style="margin-top: 40px; margin-bottom: 40px;">
+        <div class="carrossel-bloco-quatro">
+            <!-- Botões de avançar e voltar (chamando a função 4) -->
+            <button class="seta-quatro seta-esq-quatro" onclick="navegarSlideQuatro(-1)">&#10094;</button>
+            
+            <ul class="lista-slides-quatro">
+                <!-- Foto 1 (Começa ativa) -->
+                <li class="item-slide-quatro ativo-quatro">
+                    <img src="imagem5.png" alt="Foto Terceiro Carrossel 1">
+                    <div class="legenda-quatro">
+                        <h3>Título do Terceiro Bloco</h3>
+                        <p>Insira a descrição da primeira foto do terceiro carrossel.</p>
+                    </div>
+                </li>
+                
+                <!-- Foto 2 -->
+                <li class="item-slide-quatro">
+                    <img src="imagem6.png" alt="Foto Terceiro Carrossel 2">
+                    <div class="legenda-quatro">
+                        <h3>Mais Atividades</h3>
+                        <p>Escreva aqui o texto que desejar para a segunda imagem.</p>
+                    </div>
+                </li>
+            </ul>
 
-    <!-------NAO MEXA===---->
+            <button class="seta-quatro seta-dir-quatro" onclick="navegarSlideQuatro(1)">&#10095;</button>
+        </div>
+    </div>
+</section>
+<!-----========FIM DO SLIDES 3==============--->
+
+<!-------NAO MEXA===---->
 <section>
         <h2>Horarios de cultos e atividades da IPRB Belo Jardim:</h2>
         <table border="1">
@@ -622,6 +720,64 @@
     }
 
     ligarTemporizador2();
+/*!------==FIM slides 1======-------*/
+
+
+/*---=========SLIDES 2==========--*/
+function navegarSlideQuatro(direcao) {
+    const slides = document.querySelectorAll('.item-slide-quatro');
+    let indiceAtivo = 0;
+
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('ativo-quatro')) {
+            indiceAtivo = index;
+        }
+    });
+
+    slides[indiceAtivo].classList.remove('ativo-quatro');
+
+    let novoIndice = indiceAtivo + direcao;
+    if (novoIndice >= slides.length) novoIndice = 0;
+    if (novoIndice < 0) novoIndice = slides.length - 1;
+
+    slides[novoIndice].classList.add('ativo-quatro');
+}
+
+// Configuração para deixar o terceiro carrossel AUTOMÁTICO (4000 = 4 segundos)
+setInterval(function() {
+    navegarSlideQuatro(1);
+}, 3000);
+/*==========FIM SLIDES 2============*/
+
+
+/*==========SLIDES 3============*/
+// Função para controlar o segundo carrossel através dos botões
+function navegarSlideTres(direcao) {
+    const slides = document.querySelectorAll('.item-slide-tres');
+    let indiceAtivo = 0;
+
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('ativo-tres')) {
+            indiceAtivo = index;
+        }
+    });
+
+    slides[indiceAtivo].classList.remove('ativo-tres');
+
+    let novoIndice = indiceAtivo + direcao;
+    if (novoIndice >= slides.length) novoIndice = 0;
+    if (novoIndice < 0) novoIndice = slides.length - 1;
+
+    slides[novoIndice].classList.add('ativo-tres');
+}
+
+// Configuração para deixar o segundo carrossel AUTOMÁTICO (4000 = 4 segundos)
+setInterval(function() {
+    navegarSlideTres(1);
+}, 3000);
+/*===========fim SLIDES 3============*/
+
+/*=====MENU AMBURGUER======*/
     const menuToggle = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
         const closeMenu = document.getElementById('close-menu');
@@ -643,31 +799,32 @@
                 navMenu.classList.remove('active');
             });
         });
-        let slideIndex = 1;
-        mostrarSlides(slideIndex);
+ /*------=Fim menu amburger======-------*/
+/*===========SLIDES 3============*/
+function navegarSlideQuatro(direcao) {
+    const slides = document.querySelectorAll('.item-slide-quatro');
+    let indiceAtivo = 0;
 
-        // FunÃ§Ã£o para quando clicar nas setas
-        function mudarSlide(n) {
-            mostrarSlides(slideIndex += n);
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('ativo-quatro')) {
+            indiceAtivo = index;
         }
+    });
 
-        function mostrarSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("slide");
-            
-            if (n > slides.length) {slideIndex = slides.length}
-            
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            
-            slides[slideIndex-1].style.display = "block";  
-        }
+    slides[indiceAtivo].classList.remove('ativo-quatro');
 
-        // Opcional: Faz as fotos mudarem sozinhas a cada 5 segundos
-        setInterval(function() {
-            mudarSlide(1);
-        }, 3000);
+    let novoIndice = indiceAtivo + direcao;
+    if (novoIndice >= slides.length) novoIndice = 0;
+    if (novoIndice < 0) novoIndice = slides.length - 1;
+
+    slides[novoIndice].classList.add('ativo-quatro');
+}
+
+// Configuração para deixar o terceiro carrossel AUTOMÁTICO (4000 = 4 segundos)
+setInterval(function() {
+    navegarSlideQuatro(1);
+}, 4000);
+/*==========FIM SLIDES 3============*/
     </script>
     <footer>
         © 2026, todos os direitos reservados.
@@ -676,4 +833,4 @@
         
 
 </body>
-</html>
+    </html>
