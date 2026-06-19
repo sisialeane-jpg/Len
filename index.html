@@ -470,7 +470,7 @@
     </style>
     
  <body>
-     <div style="background-color: #112233; min-height: 200px; padding: 20px 15px; display: flex; align-items: center; justify-content: flex-start; gap: 15px; width: 100%; box-sizing: border-box; overflow: visible;">
+ <div style="background-color: #112233; min-height: 200px; padding: 20px 15px; display: flex; align-items: center; justify-content: flex-start; gap: 15px; width: 100%; box-sizing: border-box; overflow: visible;">
     
     <img src="Logo.png" alt="Logo" 
          style="width: 130ppx; height: 130px; object-fit: cover; border-radius: 50% !important; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); flex-shrink: 0; display: block;">
@@ -535,25 +535,57 @@
         <button class="seta-dois seta-esq-dois" onclick="navegarSlideDois(-1)">&#10094;</button>
 
         <ul class="lista-slides-dois">
-            
+            <!/------1----->
             <li class="item-slide-dois ativo-dois">
-                <img src="n" alt="Foto Missão 1">
+                <img src="fotos01.jpg" alt="Foto Missão 1">
                 <div class="legenda-slide-dois">
                     <h3>Campo Missionário MISPA</h3>
                     <p>Trabalho de evangelização e apoio comunitário em Belo Jardim.</p>
                 </div>
             </li>
-
+            <!/------2----->
+           <li class="item-slide-dois ativo-dois">
+                <img src="fotos02.jpg" alt="Foto Missão 1">
+                <div class="legenda-slide-dois">
+                    <h3>Campo Missionário MISPA</h3>
+                    <p>Trabalho de evangelização e apoio comunitário em Belo Jardim.</p>
+                </div>
+            </li>
+            <!/------3----->
+            <li class="item-slide-dois ativo-dois">
+                <img src="fotos03.jpg" alt="Foto Missão 1">
+                <div class="legenda-slide-dois">
+                    <h3>Campo Missionário MISPA</h3>
+                    <p>Trabalho de evangelização e apoio comunitário em Belo Jardim.</p>
+                </div>
+            </li>
+            <!/------4----->
+            <li class="item-slide-dois ativo-dois">
+                <img src="fotos04.jpg" alt="Foto Missão 1">
+                <div class="legenda-slide-dois">
+                    <h3>Campo Missionário MISPA</h3>
+                    <p>Trabalho de evangelização e apoio comunitário em Belo Jardim.</p>
+                </div>
+            </li>
+            <!/------5----->
             <li class="item-slide-dois">
-                <img src=".jpg" alt="Foto Missão 2">
+                <img src="fotos05.jpg" alt="Foto Missão 2">
                 <div class="legenda-slide-dois">
                     <h3>Projetos com Crianças</h3>
                     <p>Instruindo e abençoando a nova geração com amor e cuidado.</p>
                 </div>
             </li>
-
-            <li class="item-slide-dois">
-                <img src="foto Aqui" alt="Foto Missão 3">
+            <!/------6----->
+              <li class="item-slide-dois ativo-dois">
+                <img src="fotos06.jpg" alt="Foto Missão 1">
+                <div class="legenda-slide-dois">
+                    <h3>Campo Missionário MISPA</h3>
+                    <p>Trabalho de evangelização e apoio comunitário em Belo Jardim.</p>
+                </div>
+            </li>
+            <!/------7----->
+             <li class="item-slide-dois">
+                <img src="fotos07.jpg" alt="Foto Missão 3">
                 <div class="legenda-slide-dois">
                     <h3>Ações Sociais</h3>
                     <p>Amor em movimento através de doações e visitas.</p>
@@ -679,8 +711,8 @@
 </tfoot>
 </table>
 </section>
-            
 <script>
+ /*=========SLIDES1================*/
         const todosSlides2 = document.querySelectorAll('.item-slide-dois');
     const todasBolinhas2 = document.querySelectorAll('.ponto-dois');
     let posicaoAtual2 = 0;
@@ -799,32 +831,9 @@ setInterval(function() {
                 navMenu.classList.remove('active');
             });
         });
- /*------=Fim menu amburger======-------*/
-/*===========SLIDES 3============*/
-function navegarSlideQuatro(direcao) {
-    const slides = document.querySelectorAll('.item-slide-quatro');
-    let indiceAtivo = 0;
+ 
 
-    slides.forEach((slide, index) => {
-        if (slide.classList.contains('ativo-quatro')) {
-            indiceAtivo = index;
-        }
-    });
-
-    slides[indiceAtivo].classList.remove('ativo-quatro');
-
-    let novoIndice = indiceAtivo + direcao;
-    if (novoIndice >= slides.length) novoIndice = 0;
-    if (novoIndice < 0) novoIndice = slides.length - 1;
-
-    slides[novoIndice].classList.add('ativo-quatro');
-}
-
-// Configuração para deixar o terceiro carrossel AUTOMÁTICO (4000 = 4 segundos)
-setInterval(function() {
-    navegarSlideQuatro(1);
-}, 4000);
-/*==========FIM SLIDES 3============*/
+/*==========FIM MENU AMBURGUER============*/
     </script>
     <footer>
         © 2026, todos os direitos reservados.
@@ -833,4 +842,4 @@ setInterval(function() {
         
 
 </body>
-    </html>
+</html
