@@ -11,145 +11,74 @@
 
   <style>
   /*=========slides 1===========*/
-        .carrossel-bloco-dois {
-        position: relative;
-        max-width: 600px;
-        height: 350px;
-        margin: 0 auto;
-        overflow: hidden;
-        border-radius: 16px;
-        box-shadow: 0 10px 25px rgba(17, 34, 51, 0.15);
-        background-color: #112233;
-        font-family: Arial, sans-serif;
-    }
+.carrossel-bloco-seis {
+    position: relative;
+    max-width: 600px;
+    height: 350px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: #112233;
+}
 
-    .lista-slides-dois {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
+.lista-slides-seis {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+}
 
-    .item-slide-dois {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity 0.8s ease-in-out;
-        z-index: 1;
-    }
+.item-slide-seis {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
 
-    /* Força apenas o slide ativo a aparecer */
-    .item-slide-dois.ativo-dois {
-        opacity: 1 !important;
-        z-index: 2 !important;
-    }
+.item-slide-seis.ativo-seis {
+    opacity: 1;
+    position: relative;
+}
 
-    .item-slide-dois img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.item-slide-seis img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    .legenda-slide-dois {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 40px 20px 20px 20px;
-        background: linear-gradient(to top, rgba(17, 34, 51, 0.95) 0%, rgba(17, 34, 51, 0) 100%);
-        color: #ffffff;
-        box-sizing: border-box;
-        z-index: 3;
-        text-align: center;
-    }
+.legenda-seis {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(17, 34, 51, 0.9));
+    padding: 20px;
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+}
 
-    .legenda-slide-dois h3 {
-        margin: 0 0 5px 0;
-        font-size: 18px;
-        color: #00ffd0;
-    }
+/* Estilo das Setas do Carrossel 5 */
+.seta-seis {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+}
 
-    .legenda-slide-dois p {
-        margin: 0;
-        font-size: 13px;
-        color: #e2e8f0;
-    }
-
-    /* === FORMATAÇÃO PERFEITA DAS SETAS LATERAIS === */
-    .seta-dois {
-        position: absolute;
-        top: 25%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.3) !important;
-        color: #ffffff !important;
-        border: 1px solid rgba(255, 255, 255, 0.5) !important;
-        width: 42px !important;
-        height: 42px !important;
-        border-radius: 50% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        cursor: pointer;
-        z-index: 10 !important;
-        font-size: 16px !important;
-        font-weight: bold;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .seta-esq-dois { left: 15px !important; right: auto !important; }
-    .seta-dir-dois { right: 15px !important; left: auto !important; }
-
-    /* Bolinhas Indicadoras */
-    .pontos-carrossel-dois {
-        position: absolute;
-        bottom: 15px;
-        right: 20px;
-        display: flex;
-        gap: 8px;
-        z-index: 5;
-    }
-
-    .ponto-dois {
-        width: 8px;
-        height: 8px;
-        background-color: rgba(255, 255, 255, 0.4);
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .ponto-dois.ativo-pnt2 {
-        background-color: #00ffd0;
-        width: 20px;
-        border-radius: 4px;
-    }
-
-    @media (max-width: 480px) {
-        .carrossel-bloco-dois { height: 280px; margin: 0 10px; }
-    }
-    body { margin: 0; font-family: Arial, sans-serif; background-color: #f8f9fa; }
-        .navbar { background-color: #112233; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; left: 0; box-sizing: border-box; z-index: 1000; }
-        .logo { font-weight: bold; font-size: 20px; }
-        .menu-toggle { cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; z-index: 1001; }
-        .menu-toggle .bar { height: 3px; width: 100%; background-color: white; border-radius: 2px; }
-        .menu-lateral { position: fixed; top: 0; right: -100%; width: 300px; height: 100vh; background-color: #1a2e40; padding-top: 70px; transition: 0.4s ease; z-index: 999; }
-        .menu-lateral.active { right: 0; }
-        .menu-lateral a { display: block; padding: 18px 25px; color: #ecf0f1; text-decoration: none; font-size: 16px; border-bottom: 1px solid #243b53; }
-        .menu-lateral a:hover { background-color: #243b53; color: #bfa15f; }
-        .close-btn { position: absolute; top: 15px; right: 20px; color: white; font-size: 35px; cursor: pointer; }
-        .conteudo { padding: 100px 20px; text-align: center; }
-        /* Estilos Gerais (Estilo IPRB do vídeo) */
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-        }
+.seta-esq-seis { left: 15px; }
+.seta-dir-seis { right: 15px; }
 /*--=========FINAL DO 1SLIDES=------------*/
     /*=========slides 2===========*/
  .carrossel-bloco-tres {
@@ -293,7 +222,7 @@
 /*=====FIM DO 3SLIDES=====*/
 
  /* =======Barra de Topo Azul Escuro ====*/
-        .navbar {
+            .navbar {
             background-color: #112233; /* Azul escuro igual ao do vídeo */
             color: white;
             padding: 15px 20px;
@@ -311,9 +240,9 @@
             font-weight: bold;
             font-size: 18px;
         }
-/*=========fim==================*/
-        /* Ícone do Hambúrguer */
-        .menu-toggle {
+     /*=========fim==================*/
+       /* Ícone do Hambúrguer */
+          .menu-toggle {
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -422,7 +351,7 @@
             justify-content: space-between; 
             align-items: center;
         }
-        .logo-igreja {
+              .logo-igreja {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -467,7 +396,7 @@
             background-color: white;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-    </style>
+</style>
     
  <body>
  <div style="background-color: #112233; min-height: 200px; padding: 20px 15px; display: flex; align-items: center; justify-content: flex-start; gap: 15px; width: 100%; box-sizing: border-box; overflow: visible;">
@@ -528,12 +457,42 @@
     </header>
     <h3>CULTOS<br>CULTO EVANGELÍSTICO<h3> 
 <!------======SLIDES 1============-------->
+<section>
+    <h3>QUINTO BLOCO DE FOTOS</h3>
+    <div class="container-geral-carrossel6" style="margin-top: 40px; margin-bottom: 40px;">
+        <div class="carrossel-bloco-seis">
+            <!-- Botões de avançar e voltar (chamando a função 6) -->
+            <button class="seta-seis seta-esq-seis" onclick="navegarSlideSeis(-1)">&#10094;</button>
+            
+            <ul class="lista-slides-seis">
+                <!-- Foto 1 (Começa ativa) -->
+                <li class="item-slide-seis ativo-seis">
+                    <img src="imagem9.png" alt="Foto Quinto Carrossel 1">
+                    <div class="legenda-seis">
+                        <h3>Título do Quinto Bloco</h3>
+                        <p>Descrição da primeira foto do quinto carrossel aqui.</p>
+                    </div>
+                </li>
+                              <!-- Foto 2 -->
+                <li class="item-slide-seis">
+                    <img src="imagem10.png" alt="Foto Quinto Carrossel 2">
+                    <div class="legenda-seis">
+                        <h3>Mais Registros</h3>
+                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                    </div>
+                </li>
+            </ul>
 
-<!------==========f===============-------->
+            <button class="seta-seis seta-dir-seis" onclick="navegarSlideSeis(1)">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+   <!------==========f===============-------->
    
 <h3>RENOVA KIDS<h3>
    <!------=======SLIDES 2=============-------->
-      <section>
+   <section>
     <h3>MAIS PROJETOS</h3>
     <div class="container-geral-carrossel3" style="margin-top: 40px; margin-bottom: 40px;">
         <div class="carrossel-bloco-tres">
@@ -597,7 +556,7 @@
     </div>
 </section>
 <!------====fimm slides 2==========-------->
-
+    
 <!-----========SLIDES 3==============--->
 <section>
     <h3>TERCEIRO BLOCO DE FOTOS</h3>
@@ -630,7 +589,7 @@
         </div>
     </div>
 </section>
-<!-----========FIM DO SLIDES 3==============--->
+    <!-----========FIM DO SLIDES 3==============--->
 
 <!-------NAO MEXA===---->
 <section>
@@ -674,45 +633,29 @@
             
 <script>
  /*=========SLIDES1================*/
-        const todosSlides2 = document.querySelectorAll('.item-slide-dois');
-    const todasBolinhas2 = document.querySelectorAll('.ponto-dois');
-    let posicaoAtual2 = 0;
-    let cronometroCarrossel2;
+   function navegarSlideSeis(direcao) {
+    const slides = document.querySelectorAll('.item-slide-seis');
+    let indiceAtivo = 0;
 
-    function renderizarSlideDois(novoIndice) {
-        todosSlides2[posicaoAtual2].classList.remove('ativo-dois');
-        todasBolinhas2[posicaoAtual2].classList.remove('ativo-pnt2');
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('ativo-seis')) {
+            indiceAtivo = index;
+        }
+    });
 
-        posicaoAtual2 = (novoIndice + todosSlides2.length) % todosSlides2.length;
+    slides[indiceAtivo].classList.remove('ativo-seis');
 
-        todosSlides2[posicaoAtual2].classList.add('ativo-dois');
-        todasBolinhas2[posicaoAtual2].classList.add('ativo-pnt2');
-    }
+    let novoIndice = indiceAtivo + direcao;
+    if (novoIndice >= slides.length) novoIndice = 0;
+    if (novoIndice < 0) novoIndice = slides.length - 1;
 
-    function avançoAutomatico2() {
-        renderizarSlideDois(posicaoAtual2 + 1);
-    }
+    slides[novoIndice].classList.add('ativo-seis');
+}
 
-    function ligarTemporizador2() {
-        cronometroCarrossel2 = setInterval(avançoAutomatico2, 4000);
-    }
-
-    function reiniciarTemporizador2() {
-        clearInterval(cronometroCarrossel2);
-        ligarTemporizador2();
-    }
-
-    function navegarSlideDois(direcao) {
-        renderizarSlideDois(posicaoAtual2 + direcao);
-        reiniciarTemporizador2();
-    }
-
-    function irParaSlideDois(indiceAlvo) {
-        renderizarSlideDois(indiceAlvo);
-        reiniciarTemporizador2();
-    }
-
-    ligarTemporizador2();
+// Configuração para deixar o quinto carrossel AUTOMÁTICO (4000 = 4 segundos)
+setInterval(function() {
+    navegarSlideSeis(1);
+}, 4000);
 /*!------==FIM slides 1======-------*/
 
 
@@ -728,7 +671,6 @@ function navegarSlideQuatro(direcao) {
     });
 
     slides[indiceAtivo].classList.remove('ativo-quatro');
-
     let novoIndice = indiceAtivo + direcao;
     if (novoIndice >= slides.length) novoIndice = 0;
     if (novoIndice < 0) novoIndice = slides.length - 1;
