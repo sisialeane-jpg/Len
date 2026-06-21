@@ -10,69 +10,113 @@
 </head>
 
   <style>
-/* Seção dos Círculos dos Stories */
 .secao-stories {
     display: flex;
     padding: 15px;
-    background-color: #0d1b2a;
+    background-color: #000000;
     overflow-x: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .container-stories {
     display: flex;
     gap: 15px;
+    align-items: flex-start;
 }
 
 .story-circulo {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
-    font-size: 12px;
-    color: white;
+    width: 75px;
+    text-align: center;
 }
 
-/* Botão de + (Postar) */
-.borda-add {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 2px dashed #ffffff;
+.story-circulo span {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #a8a8a8;
+    font-family: sans-serif;
+    white-space: nowrap;
+}
+
+.wrapper-foto-perfil {
+    position: relative;
+    width: 65px;
+    height: 65px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 5px;
-    background-color: rgba(255, 255, 255, 0.1);
+    justify-content: center;
 }
 
-.borda-add span {
-    font-size: 30px;
+.foto-perfil-add {
+    width: 100%;
+    height: 100%;
+    border-radius: 50% !important;
+    object-fit: cover;
+}
+
+.badge-add {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    background-color: #0095f6;
     color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
     font-weight: bold;
+    border: 2px solid #000000;
+    z-index: 2;
 }
 
-/* Círculos das fotos postadas */
 .borda-colorida {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    padding: 3px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50% !important;
+    background: linear-gradient(45deg, #f99d1c, #e72c67, #b92994);
+    padding: 2.5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5px;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .borda-colorida img {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 50% !important;
     object-fit: cover;
-    border: 3px solid #0d1b2a;
+    border: 2px solid #000000;
 }
 
-/* Tela Cheia do Story Aberto */
+.btn-deletar-story {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #ff3b30;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
 .story-modal {
     display: none;
     position: fixed;
@@ -80,8 +124,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    z-index: 9999;
+    background-color: #000000;
+    z-index: 99999;
     justify-content: center;
     align-items: center;
 }
@@ -91,7 +135,6 @@
     width: 100%;
     max-width: 450px;
     height: 100%;
-    max-height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,25 +146,13 @@
     object-fit: contain;
 }
 
-.fechar-story {
-    position: absolute;
-    top: 25px;
-    right: 20px;
-    color: white;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 100;
-}
-
-/* Barrinha de Progresso no topo */
 .barra-progresso-bg {
     position: absolute;
-    top: 15px;
+    top: 12px;
     left: 10px;
     right: 10px;
-    height: 3px;
-    background-color: rgba(255, 255, 255, 0.3);
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.35);
     border-radius: 2px;
     z-index: 100;
 }
@@ -129,8 +160,46 @@
 .barra-progresso {
     width: 0%;
     height: 100%;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 2px;
+}
+
+.story-header {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.story-header-perfil {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.story-header-perfil img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.story-header-nome {
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.fechar-story {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 30px;
+    cursor: pointer;
+    padding: 0 5px;
 }
 /*======FIM DOS STORYS===========*/
   /*=========slides 1===========*/
@@ -143,7 +212,8 @@
     border-radius: 16px;
     background-color: #112233;
 }
-      .lista-slides-seis {
+
+.lista-slides-seis {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -415,8 +485,9 @@
         .menu-lateral a:hover {
             background-color: #253d54;
             padding-left: 35px; /* Efeito sutil ao passar o mouse */
-    }
-              /* Botão de Fechar dentro do menu */
+        }
+
+        /* Botão de Fechar dentro do menu */
         .close-btn {
             position: absolute;
             top: 20px;
@@ -569,6 +640,44 @@
         
     </div>
    <!------=========================-------->
+   <h3>STORYS DA IGREJA</h3>
+   <!----=========STORES========------>
+<section class="secao-stories">
+    <div class="container-stories" id="listaStoriesContainer">
+        
+        <!-- Botão "Seu Story" com o '+' azul sobreposto à sua foto -->
+        <div class="story-circulo seu-story-btn" onclick="criarNovoStoryAtravésDeAdmin()">
+            <div class="wrapper-foto-perfil">
+                <img src="fotos01.jpg" alt="Seu perfil" class="foto-perfil-add">
+                <div class="badge-add">+</div>
+            </div>
+            <span>Seu story</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= MODAL DE VISUALIZAÇÃO EM TELA CHEIA ================= -->
+<div id="modalVisualizarStory" class="story-modal">
+    <div class="story-conteudo">
+        <div class="barra-progresso-bg">
+            <div id="barraProgressoStory" class="barra-progresso"></div>
+        </div>
+        
+        <div class="story-header">
+            <div class="story-header-perfil">
+                <img src="fotos01.jpg" alt="Igreja">
+                <span class="story-header-nome">Igreja</span>
+            </div>
+            <span class="fechar-story" onclick="fecharStoryAtual()">&times;</span>
+        </div>
+        
+        <div id="containerMidiaStory"></div>
+    </div>
+</div>
+<!------====FIM DOSTORYS=========---->
+
+   
     <header>
        <fieldset>
            
@@ -654,7 +763,7 @@
    
 <h3>RENOVA KIDS<h3>
    <!------=======SLIDES 2=============-------->
-   <section>
+<section>
     <h3>MAIS PROJETOS</h3>
     <div class="container-geral-carrossel3" style="margin-top: 40px; margin-bottom: 40px;">
         <div class="carrossel-bloco-tres">
@@ -752,36 +861,7 @@
     </div>
 </section>
 <!-----========FIM DO SLIDES 3==============--->
-    <!----=========STORES========------>
-<section class="secao-stories">
-    <div class="container-stories" id="listaStoriesContainer">
-        
-        <!-- Botão de Postar (Só você sabe a senha) -->
-        <div class="story-circulo botao-adicionar" onclick="criarNovoStoryAtravésDeAdmin()">
-            <div class="borda-add">
-                <span>+</span>
-            </div>
-            <span>Postar</span>
-        </div>
 
-        <!-- Os círculos com as fotos/vídeos que você postar vão aparecer aqui sozinhos! -->
-    </div>
-</section>
-
-<!-- Input Invisível para abrir a galeria do celular -->
-<input type="file" id="inputMidiaStory" accept="image/*,video/*" style="display: none;" onchange="processarMidiaSelecionada(this)">
-
-<!-- ================= JANELA DO STORY (MODAL ÚNICO DINÂMICO) ================= -->
-<div id="modalVisualizarStory" class="story-modal">
-    <div class="story-conteudo">
-        <div class="barra-progresso-bg"><div id="barraProgressoStory" class="barra-progresso"></div></div>
-        <span class="fechar-story" onclick="fecharStoryAtual()">&times;</span>
-        
-        <!-- O JavaScript vai colocar a foto ou o vídeo aqui dentro automaticamente -->
-        <div id="containerMidiaStory"></div>
-    </div>
-</div>
-<!------====FIM DOSTORYS=========---->
 
 
 <!-------NAO MEXA===---->
@@ -928,81 +1008,110 @@ setInterval(function() {
                 navMenu.classList.remove('active');
             });
         });
+ /*==========FIM MENU AMBURGUER============*/
  
+ 
+ 
+/*-----=========STORIES===========---->*/
 
-/*==========FIM MENU AMBURGUER============*/
-<!-----=========STORIES===========---->
-const SENHA_ADMIN = "1234"; // ⬅️ Mude aqui para a senha que você quiser!
+const SENHA_ADMIN = "1234"; 
 let bancoStories = JSON.parse(localStorage.getItem('stories_igreja')) || [];
 let timeoutStoryAtivo;
 
-// Função que roda sempre que o site abre
 function carregarStoriesNaTela() {
     const container = document.getElementById('listaStoriesContainer');
+    if (!container) return;
     
-    // Remove os stories antigos da tela para desenhar os atuais (mantendo o botão de +)
     const elementosStory = container.querySelectorAll('.story-item-postado');
     elementosStory.forEach(el => el.remove());
 
     const tempoAgora = new Date().getTime();
     const vinteQuatroHoras = 24 * 60 * 60 * 1000;
 
-    // Filtra tirando os stories que já passaram de 24 horas
-    bancoStories = bancoStories.filter(story => {
-        return (tempoAgora - story.dataPostagem) < vinteQuatroHoras;
-    });
+    bancoStories = bancoStories.filter(story => (tempoAgora - story.dataPostagem) < vinteQuatroHoras);
     localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
 
-    // Desenha os stories válidos na tela
     bancoStories.forEach((story, index) => {
-        const divUrl = story.tipo === 'video' ? 'fotos01.jpg' : story.arquivo; // Capa padrão se for vídeo
+        const capaUrl = story.tipo === 'video' ? 'fotos01.jpg' : story.arquivo;
         
         const novoStoryHTML = document.createElement('div');
         novoStoryHTML.classList.add('story-circulo', 'story-item-postado');
         novoStoryHTML.setAttribute('onclick', `abrirStoryPostado(${index})`);
+        
         novoStoryHTML.innerHTML = `
             <div class="borda-colorida">
-                <img src="${divUrl}" alt="Story">
+                <img src="${capaUrl}" alt="Story">
             </div>
             <span>Igreja</span>
+            <button class="btn-deletar-story" onclick="event.stopPropagation(); removerStoryViaAdmin(${index});">×</button>
         `;
         container.appendChild(novoStoryHTML);
     });
 }
-    // Função do Botão de + (Pede a senha)
+
 function criarNovoStoryAtravésDeAdmin() {
-    const senhaDigitada = prompt("Digite a senha de administrador para postar:");
-    if (senhaDigitada === SENHA_ADMIN) {
-        document.getElementById('inputMidiaStory').click(); // Abre a galeria do celular
-    } else if (senhaDigitada !== null) {
-        alert("Senha incorreta! Apenas o administrador pode postar Stories.");
+    const senhaDigitada = prompt("Senha do Administrador:");
+    if (senhaDigitada !== SENHA_ADMIN) {
+        if (senhaDigitada !== null) alert("Senha inválida!");
+        return;
+    }
+
+    // Pergunta o formato para decidir o melhor caminho sem travar
+    const escolha = prompt("Digite FOTO para escolher da galeria\nDigite VIDEO para usar um arquivo de até 1min da pasta").toUpperCase();
+
+    if (escolha === "FOTO") {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*'; 
+        input.onchange = function(e) {
+            const arquivo = e.target.files[0];
+            if (!arquivo) return;
+            const leitor = new FileReader();
+            leitor.onload = function(evt) {
+                try {
+                    bancoStories.push({
+                        arquivo: evt.target.result,
+                        tipo: 'imagem',
+                        dataPostagem: new Date().getTime()
+                    });
+                    localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
+                    carregarStoriesNaTela();
+                } catch (err) {
+                    alert("A foto é muito pesada. Tente tirar um print dela ou usar uma imagem mais leve.");
+                }
+            };
+            leitor.readAsDataURL(arquivo);
+        };
+        input.click();
+
+    } else if (escolha === "VIDEO") {
+        // Método seguro para vídeos de até 1 minuto de qualquer tamanho em MB
+        const nomeArquivo = prompt("Mova o vídeo para a pasta do site no Spck Editor e digite o nome exato dele aqui (Ex: aviso.mp4):");
+        if (!nomeArquivo) return;
+
+        bancoStories.push({
+            arquivo: nomeArquivo,
+            tipo: 'video',
+            dataPostagem: new Date().getTime()
+        });
+        localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
+        carregarStoriesNaTela();
+        alert("Vídeo publicado com sucesso!");
+    } else if (escolha !== null) {
+        alert("Opção inválida! Digite FOTO ou VIDEO.");
     }
 }
 
-// Transforma a foto/vídeo do celular em texto para salvar no site
-function processarMidiaSelecionada(input) {
-    const arquivo = input.files[0];
-    if (!arquivo) return;
-
-    const leitor = new FileReader();
-    leitor.onload = function(e) {
-        const tipoMidia = arquivo.type.includes('video') ? 'video' : 'imagem';
-        
-        const novoStory = {
-            arquivo: e.target.result,
-            tipo: tipoMidia,
-            dataPostagem: new Date().getTime()
-        };
-
-        bancoStories.push(novoStory);
+function removerStoryViaAdmin(index) {
+    const senhaDigitada = prompt("Confirme a senha para DELETAR este story:");
+    if (senhaDigitada === SENHA_ADMIN) {
+        bancoStories.splice(index, 1);
         localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
         carregarStoriesNaTela();
-        alert("Story publicado com sucesso! Ele vai sumir sozinho em 24h.");
-    };
-    leitor.readAsDataURL(arquivo);
+        fecharStoryAtual();
+    }
 }
 
-// Abre o Story na Tela Cheia (ATUALIZADO PARA ATÉ 1 MINUTO)
 function abrirStoryPostado(index) {
     const story = bancoStories[index];
     const modal = document.getElementById('modalVisualizarStory');
@@ -1012,8 +1121,7 @@ function abrirStoryPostado(index) {
     modal.style.display = "flex";
     barra.style.width = "0%";
     containerMidia.innerHTML = "";
-
-    let tempoDuracao = 5000; // 5 segundos padrão para imagem
+    let tempoDuracao = 5000;
 
     if (story.tipo === 'video') {
         const video = document.createElement('video');
@@ -1023,19 +1131,17 @@ function abrirStoryPostado(index) {
         video.playsInline = true;
         containerMidia.appendChild(video);
 
-        // Quando o vídeo carregar, ajusta o tempo da barra para o tempo real dele
         video.onloadedmetadata = function() {
             tempoDuracao = video.duration * 1000;
             barra.style.transition = `width ${tempoDuracao}ms linear`;
             setTimeout(() => barra.style.width = "100%", 50);
-            
-            // Fecha o story quando o vídeo terminar
-            timeoutStoryAtivo = setTimeout(() => {
-                fecharStoryAtual();
-            }, tempoDuracao);
+            timeoutStoryAtivo = setTimeout(fecharStoryAtual, tempoDuracao);
+        };
+        video.onerror = function() {
+            alert("Vídeo não encontrado. Verifique se o arquivo está na pasta do Spck Editor com o mesmo nome.");
+            fecharStoryAtual();
         };
     } else {
-        // Se for imagem, roda o tempo padrão de 5 segundos
         const img = document.createElement('img');
         img.src = story.arquivo;
         img.className = "story-midia";
@@ -1043,21 +1149,26 @@ function abrirStoryPostado(index) {
 
         barra.style.transition = `width ${tempoDuracao}ms linear`;
         setTimeout(() => barra.style.width = "100%", 50);
-
-        timeoutStoryAtivo = setTimeout(() => {
-            fecharStoryAtual();
-        }, tempoDuracao);
+        timeoutStoryAtivo = setTimeout(fecharStoryAtual, tempoDuracao);
     }
 }
 
 function fecharStoryAtual() {
+    // Esconde o modal na tela
     document.getElementById('modalVisualizarStory').style.display = "none";
+    
+    // Zera e esvazia todo o conteúdo de dentro da janela (faz o vídeo e o som pararem na hora!)
+    const containerMidia = document.getElementById('containerMidiaStory');
+    if (containerMidia) {
+        containerMidia.innerHTML = "";
+    }
+    
+    // Cancela o cronômetro para não fechar o próximo story antes da hora
     clearTimeout(timeoutStoryAtivo);
 }
 
-// Executa o carregador assim que a página abre
 carregarStoriesNaTela();
-<!-----==FIM DOS STORIES======---->
+/*-----==FIM DOS STORIES======*/
     </script>
     <footer>
         © 2026, todos os direitos reservados.
