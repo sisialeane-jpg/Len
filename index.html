@@ -30,7 +30,27 @@
     }
 }
 /*FIM DQ LINHA RGB*/
+
+
 /*COMEÇO DO STORIES*/
+/* Legenda moderna por cima da mídia (estilo Instagram) */
+.story-legenda {
+    position: absolute;
+    bottom: 50px; /* Fica na parte de baixo, acima do botão de fechar */
+    left: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6); /* Fundo preto suave */
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    font-family: sans-serif;
+    z-index: 110; /* Garante que fica na frente do vídeo */
+    word-break: break-word;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
 .secao-stories {
     display: flex;
     padding: 15px;
@@ -165,6 +185,23 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+/* Novo: Tela exclusiva para exibição de avisos em Texto */
+.story-texto-tela {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    word-break: break-word;
 }
 
 .barra-progresso-bg {
@@ -667,6 +704,7 @@
     <div class="linha-rgb"></div>
 
    <!----=========STORES========------>
+<!-- ================= SEÇÃO DE STORIES ESTILO INSTAGRAM ================= -->
 <section class="secao-stories">
     <div class="container-stories" id="listaStoriesContainer">
         
@@ -697,7 +735,8 @@
             <span class="fechar-story" onclick="fecharStoryAtual()">&times;</span>
         </div>
         
-        <div id="containerMidiaStory"></div>
+        <!-- Área dinâmica onde entra Foto, Vídeo ou o Texto formatado -->
+        <div id="containerMidiaStory" style="width:100%; height:100%;"></div>
     </div>
 </div>
 </fieldset>
@@ -1130,10 +1169,10 @@ setInterval(function() {
  
  
 /*-----=========STORIES===========---->*/
-
 const SENHA_ADMIN = "1234"; 
 let bancoStories = JSON.parse(localStorage.getItem('stories_igreja')) || [];
 let timeoutStoryAtivo;
+let toqueTimer; 
 
 function carregarStoriesNaTela() {
     const container = document.getElementById('listaStoriesContainer');
@@ -1149,11 +1188,27 @@ function carregarStoriesNaTela() {
     localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
 
     bancoStories.forEach((story, index) => {
-        const capaUrl = story.tipo === 'video' ? 'fotos01.jpg' : story.arquivo;
+        const capaUrl = (story.tipo === 'video' || story.tipo === 'texto') ? 'fotos01.jpg' : story.arquivo;
         
         const novoStoryHTML = document.createElement('div');
         novoStoryHTML.classList.add('story-circulo', 'story-item-postado');
+        
+        novoStoryHTML.addEventListener('touchstart', function() {
+            toqueTimer = setTimeout(() => {
+                removerStoryViaAdmin(index);
+                toqueTimer = null;
+            }, 1500);
+        });
+
+        novoStoryHTML.addEventListener('touchend', function() {
+            if (toqueTimer) {
+                clearTimeout(toqueTimer);
+                abrirStoryPostado(index);
+            }
+        });
+
         novoStoryHTML.setAttribute('onclick', `abrirStoryPostado(${index})`);
+        novoStoryHTML.setAttribute('oncontextmenu', `removerStoryViaAdmin(${index}); return false;`);
         
         novoStoryHTML.innerHTML = `
             <div class="borda-colorida">
@@ -1173,8 +1228,7 @@ function criarNovoStoryAtravésDeAdmin() {
         return;
     }
 
-    // Pergunta o formato para decidir o melhor caminho sem travar
-    const escolha = prompt("Digite FOTO para escolher da galeria\nDigite VIDEO para usar um arquivo de até 1min da pasta").toUpperCase();
+    const escolha = prompt("Escolha o que deseja postar:\nDigite FOTO para galeria\nDigite VIDEO para arquivo da pasta\nDigite TEXTO para criar um aviso").toUpperCase();
 
     if (escolha === "FOTO") {
         const input = document.createElement('input');
@@ -1183,18 +1237,23 @@ function criarNovoStoryAtravésDeAdmin() {
         input.onchange = function(e) {
             const arquivo = e.target.files[0];
             if (!arquivo) return;
+            
+            // Pergunta o título para a foto
+            const tituloPost = prompt("Digite um título/legenda para esta foto (ou deixe em branco):");
+
             const leitor = new FileReader();
             leitor.onload = function(evt) {
                 try {
                     bancoStories.push({
                         arquivo: evt.target.result,
+                        titulo: tituloPost,
                         tipo: 'imagem',
                         dataPostagem: new Date().getTime()
                     });
                     localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
                     carregarStoriesNaTela();
                 } catch (err) {
-                    alert("A foto é muito pesada. Tente tirar um print dela ou usar uma imagem mais leve.");
+                    alert("A foto é muito pesada.");
                 }
             };
             leitor.readAsDataURL(arquivo);
@@ -1202,34 +1261,55 @@ function criarNovoStoryAtravésDeAdmin() {
         input.click();
 
     } else if (escolha === "VIDEO") {
-        // Método seguro para vídeos de até 1 minuto de qualquer tamanho em MB
-        const nomeArquivo = prompt("Mova o vídeo para a pasta do site no Spck Editor e digite o nome exato dele aqui (Ex: aviso.mp4):");
+        const nomeArquivo = prompt("Mova o vídeo para a pasta no Spck Editor e digite o nome exato dele (Ex: aviso.mp4):");
         if (!nomeArquivo) return;
+
+        // Pergunta o título para o vídeo
+        const tituloPost = prompt("Digite o título que aparecerá escrito por cima do vídeo:");
 
         bancoStories.push({
             arquivo: nomeArquivo,
+            titulo: tituloPost,
             tipo: 'video',
             dataPostagem: new Date().getTime()
         });
         localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
         carregarStoriesNaTela();
-        alert("Vídeo publicado com sucesso!");
-    } else if (escolha !== null) {
-        alert("Opção inválida! Digite FOTO ou VIDEO.");
+        alert("Vídeo publicado! Faça o Push no Spck Editor.");
+
+    } else if (escolha === "TEXTO") {
+        const textoAviso = prompt("Digite o texto do seu aviso para o Story:");
+        if (!textoAviso) return;
+
+        const corFundo = prompt("Escolha a cor de fundo (Ex: purple, blue, red) ou dê OK para o padrão:");
+        const fundoFinal = corFundo ? corFundo : "linear-gradient(135deg, #8a2387, #e94057, #f27121)";
+
+        bancoStories.push({
+            texto: textoAviso,
+            fundo: fundoFinal,
+            tipo: 'texto',
+            dataPostagem: new Date().getTime()
+        });
+        localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
+        carregarStoriesNaTela();
+        alert("Aviso em texto publicado!");
     }
 }
 
 function removerStoryViaAdmin(index) {
-    const senhaDigitada = prompt("Confirme a senha para DELETAR este story:");
+    const senhaDigitada = prompt("Digite a senha para APAGAR este story:");
     if (senhaDigitada === SENHA_ADMIN) {
         bancoStories.splice(index, 1);
         localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
         carregarStoriesNaTela();
         fecharStoryAtual();
+        alert("Story apagado!");
     }
 }
 
 function abrirStoryPostado(index) {
+    if (!bancoStories[index]) return;
+
     const story = bancoStories[index];
     const modal = document.getElementById('modalVisualizarStory');
     const containerMidia = document.getElementById('containerMidiaStory');
@@ -1248,6 +1328,14 @@ function abrirStoryPostado(index) {
         video.playsInline = true;
         containerMidia.appendChild(video);
 
+        // Se houver título salvo, cria o elemento na tela por cima do vídeo
+        if (story.titulo) {
+            const divLegenda = document.createElement('div');
+            divLegenda.className = "story-legenda";
+            divLegenda.innerText = story.titulo;
+            containerMidia.appendChild(divLegenda);
+        }
+
         video.onloadedmetadata = function() {
             tempoDuracao = video.duration * 1000;
             barra.style.transition = `width ${tempoDuracao}ms linear`;
@@ -1255,14 +1343,33 @@ function abrirStoryPostado(index) {
             timeoutStoryAtivo = setTimeout(fecharStoryAtual, tempoDuracao);
         };
         video.onerror = function() {
-            alert("Vídeo não encontrado. Verifique se o arquivo está na pasta do Spck Editor com o mesmo nome.");
+            alert("Vídeo não encontrado no servidor.");
             fecharStoryAtual();
         };
+    } else if (story.tipo === 'texto') {
+        tempoDuracao = 7000;
+        const divTexto = document.createElement('div');
+        divTexto.className = "story-texto-tela";
+        divTexto.style.background = story.fundo;
+        divTexto.innerText = story.texto;
+        containerMidia.appendChild(divTexto);
+
+        barra.style.transition = `width ${tempoDuracao}ms linear`;
+        setTimeout(() => barra.style.width = "100%", 50);
+        timeoutStoryAtivo = setTimeout(fecharStoryAtual, tempoDuracao);
     } else {
         const img = document.createElement('img');
         img.src = story.arquivo;
         img.className = "story-midia";
         containerMidia.appendChild(img);
+
+        // Se a foto tiver título salvo, exibe por cima também!
+        if (story.titulo) {
+            const divLegenda = document.createElement('div');
+            divLegenda.className = "story-legenda";
+            divLegenda.innerText = story.titulo;
+            containerMidia.appendChild(divLegenda);
+        }
 
         barra.style.transition = `width ${tempoDuracao}ms linear`;
         setTimeout(() => barra.style.width = "100%", 50);
@@ -1271,16 +1378,9 @@ function abrirStoryPostado(index) {
 }
 
 function fecharStoryAtual() {
-    // Esconde o modal na tela
     document.getElementById('modalVisualizarStory').style.display = "none";
-    
-    // Zera e esvazia todo o conteúdo de dentro da janela (faz o vídeo e o som pararem na hora!)
     const containerMidia = document.getElementById('containerMidiaStory');
-    if (containerMidia) {
-        containerMidia.innerHTML = "";
-    }
-    
-    // Cancela o cronômetro para não fechar o próximo story antes da hora
+    if (containerMidia) containerMidia.innerHTML = "";
     clearTimeout(timeoutStoryAtivo);
 }
 
