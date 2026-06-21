@@ -750,7 +750,14 @@
 </fieldset>
 <!------====FIM DOSTORYS=========---->
 
-         
+<!--=========Versículo do Dia======-->
+<div class="secao-versiculo" style="background: #112233; color: white; padding: 20px; margin: 20px auto; max-width: 90%; border-radius: 8px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <h3 style="margin-top: 0; color: #ffcc00; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">Versículo de Hoje</h3>
+    <p id="texto-versiculo" style="font-style: italic; font-size: 18px; line-height: 1.5; margin: 10px 0;">"Carregando palavra do dia..."</p>
+    <span id="referencia-versiculo" style="font-weight: bold; display: block; margin-top: 5px; color: #a0b0c0;">— Bíblia Sagrada</span>
+</div>   
+<!----=======FIMM===========------>
+    
 <!------======SLIDES 1============-------->
 <section>
     <h3>RENOVA KIDS</h3>
@@ -1394,6 +1401,32 @@ function fecharStoryAtual() {
 
 carregarStoriesNaTela();
 /*-----==FIM DOS STORIES======*/
+/*======VERSÍCULOS==============*/
+// Lista de versículos da igreja
+const listaVersiculos = [
+    { texto: "Porque Deus tanto amou o mundo que deu o seu Filho Unigênito, para que todo o que nele crer não pereça, mas tenha a vida eterna.", ref: "João 3:16" },
+    { texto: "O Senhor é o meu pastor; de nada terei falta.", ref: "Salmo 23:1" },
+    { texto: "Posso todas as coisas naquele que me fortalece.", ref: "Filipenses 4:13" },
+    { texto: "Sejam fortes e corajosos. Não tenham medo nem fiquem apavorados por causa deles, pois o Senhor, o seu Deus, vai com vocês; nunca os deixará, nunca os abandonará.", ref: "Deuteronômio 31:6" },
+    { texto: "Sabemos que Deus age em todas as coisas para o bem daqueles que o amam, dos que foram chamados de acordo com o seu propósito.", ref: "Romanos 8:28" },
+    { texto: "Confie no Senhor de todo o seu coração e não se apóie em seu próprio entendimento; reconheça o Senhor em todos os seus caminhos, e ele endireitará as suas veredas.", ref: "Provérbios 3:5-6" },
+    { texto: "Mil poderão cair ao seu lado e dez mil à sua direita, mas nada o atingirá.", ref: "Salmo 91:7" },
+    { texto: "Buscai, pois, em primeiro lugar, o Reino de Deus e a sua justiça, e todas estas coisas vos serão acrescentadas.", ref: "Mateus 6:33" }
+];
+
+// Função que escolhe um versículo aleatório
+function mostrarVersiculoAleatorio() {
+    const indiceAleatorio = Math.floor(Math.random() * listaVersiculos.length);
+    const versiculoEscolhido = listaVersiculos[indiceAleatorio];
+    
+    // Coloca o texto e a referência na tela
+    document.getElementById('texto-versiculo').innerText = `"${versiculoEscolhido.texto}"`;
+    document.getElementById('referencia-versiculo').innerText = `— ${versiculoEscolhido.ref}`;
+}
+
+// Executa a função assim que a página termina de carregar
+window.addEventListener('DOMContentLoaded', mostrarVersiculoAleatorio);
+/*========FINAL VERSÍCULOS==============*/
     </script>
     <footer>
         © 2026, todos os direitos reservados.
