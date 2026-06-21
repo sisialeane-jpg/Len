@@ -10,6 +10,27 @@
 </head>
 
   <style>
+/*LINHA RGB*/
+.linha-rgb {
+    width: 100%;          /* Ocupa toda a largura da tela */
+    height: 4px;          /* Espessura da linha (aumente se quiser mais grossa) */
+    border: none;
+    background: linear-gradient(90deg, #ff0000, #ff7700, #ffdd00, #00ff00, #00ffff, #0000ff, #8b00ff, #ff0000);
+    background-size: 200% 100%; /* Aumenta o fundo para o efeito poder correr */
+    animation: efeitoRGB 4s linear infinite; /* Roda a animação em 4 segundos infinitamente */
+}
+
+/* O segredo da animação: faz o degradê se mover para o lado */
+@keyframes efeitoRGB {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+/*FIM DQ LINHA RGB*/
+/*COMEÇO DO STORIES*/
 .secao-stories {
     display: flex;
     padding: 15px;
@@ -415,7 +436,7 @@
 
  /* =======Barra de Topo Azul Escuro ====*/
             .navbar {
-            background-color: #112233; /* Azul escuro igual ao do v�deo */
+            background-color: #112233; /* Azul escuro igual ao do vídeo */
             color: white;
             padding: 15px 20px;
             display: flex;
@@ -433,7 +454,7 @@
             font-size: 18px;
         }
      /*=========fim==================*/
-       /* �cone do Hamb�rguer */
+       /* Ícone do Hambúrguer */
           .menu-toggle {
             cursor: pointer;
             display: flex;
@@ -456,7 +477,7 @@
         .menu-lateral {
             position: fixed;
             top: 0;
-            right: -100%; /* Come�a escondido na direita */
+            right: -100%; /* Começa escondido na direita */
             width: 280px;
             height: 100vh;
             background-color: #1a2e40;
@@ -487,7 +508,7 @@
             padding-left: 35px; /* Efeito sutil ao passar o mouse */
         }
 
-        /* Bot�o de Fechar dentro do menu */
+        /* Botão de Fechar dentro do menu */
         .close-btn {
             position: absolute;
             top: 20px;
@@ -497,7 +518,7 @@
             cursor: pointer;
         }
        
-               /* Configurações Gerais */
+               /* ConfiguraÃ§Ãµes Gerais */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -535,7 +556,7 @@
             text-transform: uppercase;
         }
 
-        /* --- 2. CABEÇALHO PRINCIPAL AZUL (NOVA) --- */
+        /* --- 2. CABEÃ‡ALHO PRINCIPAL AZUL (NOVA) --- */
         .cabecalho-principal {
             background-color: #0d2343; 
             padding: 15px 20px;
@@ -598,7 +619,7 @@
     
     <div style="display: flex; flex-direction: column; text-align: left;">
         <h2 style="color: #ffffff; font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; margin: 0; line-height: 1.3; text-transform: uppercase; letter-spacing: 8.0px;">
-            congrega��o presbiteriana renovada
+            congregação presbiteriana renovada
         </h2>
         <span style="font-family: Arial, sans-serif; font-size: 20px; color: white; font-weight: 500; margin-top: 3px;">
             de Belo Jardim
@@ -624,40 +645,33 @@
     <div class="menu-lateral" id="nav-menu">
         <div class="close-btn" id="close-menu">&times;</div>
         
-        <a href="#">In�cio</a>
+        <a href="#">Início</a>
         
         <a href="quem-somos.html">Quem Somos</a>
         
-        <a href="">Minist�rios</a>
+        <a href="">Ministérios</a>
         
         <a href="#">Agenda da Igreja</a>
         
-        <a href="#">Pedidos de Ora��o</a>
+        <a href="#">Pedidos de Oração</a>
         
-        <a href="Dizimo-e-ofertas.html">D�zimos e Ofertas</a>
+        <a href="Dizimo-e-ofertas.html">Dízimos e Ofertas</a>
         
         <a href="#">Contato</a>
         
     </div>
    <!------=========================-------->
-       <header>
-       <fieldset>
-           
-     <legend><h1>Bem-vindo a Nossa Igreja</h1><legend>
-        <h3>Um lugar de renovo, avivamento e milagres</h3>
-        </fieldset>
-        </header>
-<fieldset>
-     <legend><h3>STORIES DA IGREJA</h3></legend>
-    <p>desaparecer� em 24h</p>
+<fieldset> 
+    <legend><h3>STORYS DA IGREJA</h3></legend>
+    <p>os stories permanecerá 24h </p>
+    <div class="linha-rgb"></div>
 
-    </fieldset>
    <!----=========STORES========------>
 <section class="secao-stories">
     <div class="container-stories" id="listaStoriesContainer">
         
-        <!-- Bot�o "Seu Story" com o '+' azul sobreposto � sua foto -->
-        <div class="story-circulo seu-story-btn" onclick="criarNovoStoryAtrav�sDeAdmin()">
+        <!-- Botão "Seu Story" com o '+' azul sobreposto à sua foto -->
+        <div class="story-circulo seu-story-btn" onclick="criarNovoStoryAtravésDeAdmin()">
             <div class="wrapper-foto-perfil">
                 <img src="fotos01.jpg" alt="Seu perfil" class="foto-perfil-add">
                 <div class="badge-add">+</div>
@@ -668,9 +682,7 @@
     </div>
 </section>
 
-<!-- ================= MODAL DE VISUALIZA��O EM TELA CHEIA ================= -->
-
-
+<!-- ================= MODAL DE VISUALIZAÇÃO EM TELA CHEIA ================= -->
 <div id="modalVisualizarStory" class="story-modal">
     <div class="story-conteudo">
         <div class="barra-progresso-bg">
@@ -688,27 +700,33 @@
         <div id="containerMidiaStory"></div>
     </div>
 </div>
-
+</fieldset>
 <!------====FIM DOSTORYS=========---->
-   
 
+   
+    <header>
+       <fieldset>
+           
+     <legend><h1>Bem-vindo a Nossa Igreja</h1><legend>
+        <h3>Um lugar de renovo, avivamento e milagres</h3>
+        </fieldset>
     </header>
-    <h3>RENOVA KIDS<h3> 
 <!------======SLIDES 1============-------->
 <section>
+    <h3>RENOVA KIDS</h3>
     <h3>EBI</h3>
     <div class="container-geral-carrossel6" style="margin-top: 40px; margin-bottom: 40px;">
         <div class="carrossel-bloco-seis">
-            <!-- Bot�es de avan�ar e voltar (chamando a fun��o 6) -->
+            <!-- Botões de avançar e voltar (chamando a função 6) -->
             <button class="seta-seis seta-esq-seis" onclick="navegarSlideSeis(-1)">&#10094;</button>
             
             <ul class="lista-slides-seis">
-                <!-- Foto 1 (Come�a ativa) -->
+                <!-- Foto 1 (Começa ativa) -->
                 <li class="item-slide-seis ativo-seis">
                     <img src="renova1.jpg" alt="Foto Quinto Carrossel 1">
                     <div class="legenda-seis">
-                        <h3>T�tulo do Quinto Bloco</h3>
-                        <p>Descri��o da primeira foto do quinto carrossel aqui.</p>
+                        <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
                 
@@ -716,147 +734,148 @@
                 <li class="item-slide-seis">
                     <img src="renova2.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                           <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
                                 <!-- Foto 3 -->
                 <li class="item-slide-seis">
                     <img src="renova3.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                          <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
                                 <!-- Foto 4-->
                 <li class="item-slide-seis">
                     <img src="renova4.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                          <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
                                 <!-- Foto 5 -->
                 <li class="item-slide-seis">
                     <img src="renova5.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                          <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
                                 <!-- Foto 6 -->
                 <li class="item-slide-seis">
                     <img src="renova6.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                           <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 7-->
+                                <!-- Foto 7 -->
                 <li class="item-slide-seis">
                     <img src="renova7.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                           <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 8 -->
+                <!-- Foto 8-->
                 <li class="item-slide-seis">
-                    <img src="renova8.jpg alt="Foto Quinto Carrossel 2">
+                    <img src="renova8.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                            <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 9 -->
+                <!-- Foto 9 -->
                 <li class="item-slide-seis">
                     <img src="renova9.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                            <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 10 -->
+                <!-- Foto 10 -->
                 <li class="item-slide-seis">
                     <img src="renova10.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                            <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 11 -->
+                <!-- Foto 11 -->
                 <li class="item-slide-seis">
                     <img src="renova11.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                           <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 12 -->
+                <!-- Foto 12 -->
                 <li class="item-slide-seis">
                     <img src="renova12.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                         <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 13-->
+                <!-- Foto 13 -->
                 <li class="item-slide-seis">
                     <img src="renova13.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                          <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 14 -->
+                <!-- Foto 14-->
                 <li class="item-slide-seis">
                     <img src="renova14.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                         <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 15-->
+                <!-- Foto 15 -->
                 <li class="item-slide-seis">
                     <img src="renova15.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                        <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 16 -->
+                <!-- Foto 16 -->
                 <li class="item-slide-seis">
                     <img src="renova16.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                         <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 17 -->
+                <!-- Foto 17 -->
                 <li class="item-slide-seis">
                     <img src="renova17.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                            <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 18 -->
+                <!-- Foto 18 -->
                 <li class="item-slide-seis">
                     <img src="renova18.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                          <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
-                                         <!-- Foto 19-->
+                <!-- Foto 19 -->
                 <li class="item-slide-seis">
                     <img src="renova19.jpg" alt="Foto Quinto Carrossel 2">
                     <div class="legenda-seis">
-                        <h3>Mais Registros</h3>
-                        <p>Escreva aqui o texto explicativo da segunda imagem.</p>
+                            <h3>EBI</h3>
+                        <p>Renova kids</p>
                     </div>
                 </li>
             </ul>
+
             <button class="seta-seis seta-dir-seis" onclick="navegarSlideSeis(1)">&#10095;</button>
         </div>
     </div>
@@ -864,10 +883,11 @@
 
    <!------==========f===============-------->
    
-<h3>CULTOS/CULTOS ENVAGELIST�COS<h3>
+<h3>CULTO/CULTO EVANGELOSTÍCO<h3>
    <!------=======SLIDES 2=============-------->
-   <section>
     <h3>C.C-E</h3>
+    <section>
+    <h3></h3>
     <div class="container-geral-carrossel3" style="margin-top: 40px; margin-bottom: 40px;">
         <div class="carrossel-bloco-tres">
             <button class="seta-tres seta-esq-tres" onclick="navegarSlideTres(-1)">&#10094;</button>
@@ -876,52 +896,45 @@
                 <li class="item-slide-tres ativo-tres">
                     <img src="fotos01.jpg" alt="Foto Nova 1">
                     <div class="legenda-tres">
-                        <h3>Novo Trabalho</h3>
-                        <p>Descri��o da foto do segundo carrossel aqui.</p>
+                        <h3>C.C-E</h3>
                     </div>
                 </li>
                 
                 <li class="item-slide-tres">
                     <img src="fotos02.jpg" alt="Foto Nova 2">
                     <div class="legenda-tres">
-                        <h3>Apoio � Comunidade</h3>
-                        <p>Mais uma descri��o bem bonita para o seu site.</p>
+                        <h3>C.C-E</h3>
                     </div>
                 </li>
                 <li class="item-slide-tres">
                     <img src="fotos03.jpg" alt="Foto Nova 1">
                     <div class="legenda-tres">
-                        <h3>Apoio � Comunidade</h3>
-                        <p>Mais uma descri��o bem bonita para o seu site.</p>
+                    <h3>C.C-E</h3>
                     </div>
                 </li>
                 <li class="item-slide-tres">
                     <img src="fotos04.jpg" alt="Foto Nova 2">
                     <div class="legenda-tres">
-                        <h3>Apoio � Comunidade</h3>
-                        <p>Mais uma descri��o bem bonita para o seu site.</p>
-                    </div>
+                          <h3>C.C-E</h3>
+                       </div>
                 </li>
                 <li class="item-slide-tres">
                     <img src="fotos05.jpg" alt="Foto Nova 1">
                     <div class="legenda-tres">
-                        <h3>Apoio � Comunidade</h3>
-                        <p>Mais uma descri��o bem bonita para o seu site.</p>
+                      <h3>C.C-E</h3>
                     </div>
                 </li>
                 <li class="item-slide-tres">
                     <img src="fotos06.jpg" alt="Foto Nova 2">
                     <div class="legenda-tres">
-                        <h3>Apoio � Comunidade</h3>
-                        <p>Mais uma descri��o bem bonita para o seu site.</p>
-                    </div>
+                        <h3>C.C-E</h3>
+                        </div>
                 </li>
                                 <li class="item-slide-tres">
                     <img src="fotos07.jpg" alt="Foto Nova 2">
                     <div class="legenda-tres">
-                        <h3>Apoio � Comunidade</h3>
-                        <p>Mais uma descri��o bem bonita para o seu site.</p>
-                    </div>
+                          <h3>C.C-E</h3>
+                        </div>
                 </li>
             </ul>
 
@@ -930,22 +943,23 @@
     </div>
 </section>
 <!------====fimm slides 2==========-------->
-  <h3>PEQUENO GRUPO</h3>
+    
 <!-----========SLIDES 3==============--->
+    <h3>PEQUENO GRUPO</h3>
 <section>
     <h3>P-G</h3>
     <div class="container-geral-carrossel4" style="margin-top: 40px; margin-bottom: 40px;">
         <div class="carrossel-bloco-quatro">
-            <!-- Bot�es de avan�ar e voltar (chamando a fun��o 4) -->
+            <!-- Botões de avançar e voltar (chamando a função 4) -->
             <button class="seta-quatro seta-esq-quatro" onclick="navegarSlideQuatro(-1)">&#10094;</button>
             
             <ul class="lista-slides-quatro">
-                <!-- Foto 1 (Come�a ativa) -->
+                <!-- Foto 1 (Começa ativa) -->
                 <li class="item-slide-quatro ativo-quatro">
                     <img src="grupo01.jpg" alt="Foto Terceiro Carrossel 1">
                     <div class="legenda-quatro">
                         <h3>P-G</h3>
-                        <p>Pequeno grupo</p>
+                        <p>PEQUENO GRUPO</p>
                     </div>
                 </li>
                 
@@ -953,8 +967,8 @@
                 <li class="item-slide-quatro">
                     <img src="grupo02.jpg" alt="Foto Terceiro Carrossel 2">
                     <div class="legenda-quatro">
-                        <h3>P-G</h3>
-                        <p>Pequeno grupo</p>
+                     <h3>P-G</h3>
+                        <p>PEQUENO GRUPO</p>
                     </div>
                 </li>
             </ul>
@@ -980,14 +994,14 @@
                 <tbody>
                                         <tr>
                         <td>9H</td>
-                        <td>Domingo: Escola b�blica dominical</td>
+                        <td>Domingo: Escola bíblica dominical</td>
                 <tr>
                     <tr>
                         <td>19H</td>
                         <td>Domingo:Culto da familia</td>
                 <tr>
                     <td>19H</td>
-                    <td>Ter�a:Renovada</td>
+                    <td>Terça:Renovada</td>
                 </tr>
                 <tr>
                     <td>19H</td>
@@ -997,11 +1011,11 @@
                     <td>3h</td>
                     <td>Sabado: Renova kids/EBI</td>
                 </tr>
-                </tbody>
-                <tfoot>
+                </tbody
+                    <tfoot>
                              <tr>
                         <td
-                            colspan="2">visite-nos venha participar conosco e fa�a parte dessa familia renovada</td>
+                            colspan="2">visite-nos venha participar conosco e faça parte dessa familia renovada</td>
                     </tr>
 </tfoot>
 </table>
@@ -1028,7 +1042,7 @@
     slides[novoIndice].classList.add('ativo-seis');
 }
 
-// Configura��o para deixar o quinto carrossel AUTOM�TICO (4000 = 4 segundos)
+// Configuração para deixar o quinto carrossel AUTOMÁTICO (4000 = 4 segundos)
 setInterval(function() {
     navegarSlideSeis(1);
 }, 4000);
@@ -1055,7 +1069,7 @@ function navegarSlideQuatro(direcao) {
     slides[novoIndice].classList.add('ativo-quatro');
 }
 
-// Configura��o para deixar o terceiro carrossel AUTOM�TICO (4000 = 4 segundos)
+// Configuração para deixar o terceiro carrossel AUTOMÁTICO (4000 = 4 segundos)
 setInterval(function() {
     navegarSlideQuatro(1);
 }, 3000);
@@ -1063,7 +1077,7 @@ setInterval(function() {
 
 
 /*==========SLIDES 3============*/
-// Fun��o para controlar o segundo carrossel atrav�s dos bot�es
+// Função para controlar o segundo carrossel através dos botões
 function navegarSlideTres(direcao) {
     const slides = document.querySelectorAll('.item-slide-tres');
     let indiceAtivo = 0;
@@ -1083,7 +1097,7 @@ function navegarSlideTres(direcao) {
     slides[novoIndice].classList.add('ativo-tres');
 }
 
-// Configura��o para deixar o segundo carrossel AUTOM�TICO (4000 = 4 segundos)
+// Configuração para deixar o segundo carrossel AUTOMÁTICO (4000 = 4 segundos)
 setInterval(function() {
     navegarSlideTres(1);
 }, 3000);
@@ -1099,7 +1113,7 @@ setInterval(function() {
             navMenu.classList.add('active');
         });
 
-        // Fechar Menu no bot�o X
+        // Fechar Menu no botão X
         closeMenu.addEventListener('click', () => {
             navMenu.classList.remove('active');
         });
@@ -1146,21 +1160,21 @@ function carregarStoriesNaTela() {
                 <img src="${capaUrl}" alt="Story">
             </div>
             <span>Igreja</span>
-            <button class="btn-deletar-story" onclick="event.stopPropagation(); removerStoryViaAdmin(${index});">�</button>
+            <button class="btn-deletar-story" onclick="event.stopPropagation(); removerStoryViaAdmin(${index});">×</button>
         `;
         container.appendChild(novoStoryHTML);
     });
 }
 
-function criarNovoStoryAtrav�sDeAdmin() {
+function criarNovoStoryAtravésDeAdmin() {
     const senhaDigitada = prompt("Senha do Administrador:");
     if (senhaDigitada !== SENHA_ADMIN) {
-        if (senhaDigitada !== null) alert("Senha inv�lida!");
+        if (senhaDigitada !== null) alert("Senha inválida!");
         return;
     }
 
     // Pergunta o formato para decidir o melhor caminho sem travar
-    const escolha = prompt("Digite FOTO para escolher da galeria\nDigite VIDEO para usar um arquivo de at� 1min da pasta").toUpperCase();
+    const escolha = prompt("Digite FOTO para escolher da galeria\nDigite VIDEO para usar um arquivo de até 1min da pasta").toUpperCase();
 
     if (escolha === "FOTO") {
         const input = document.createElement('input');
@@ -1180,7 +1194,7 @@ function criarNovoStoryAtrav�sDeAdmin() {
                     localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
                     carregarStoriesNaTela();
                 } catch (err) {
-                    alert("A foto � muito pesada. Tente tirar um print dela ou usar uma imagem mais leve.");
+                    alert("A foto é muito pesada. Tente tirar um print dela ou usar uma imagem mais leve.");
                 }
             };
             leitor.readAsDataURL(arquivo);
@@ -1188,8 +1202,8 @@ function criarNovoStoryAtrav�sDeAdmin() {
         input.click();
 
     } else if (escolha === "VIDEO") {
-        // M�todo seguro para v�deos de at� 1 minuto de qualquer tamanho em MB
-        const nomeArquivo = prompt("Mova o v�deo para a pasta do site no Spck Editor e digite o nome exato dele aqui (Ex: aviso.mp4):");
+        // Método seguro para vídeos de até 1 minuto de qualquer tamanho em MB
+        const nomeArquivo = prompt("Mova o vídeo para a pasta do site no Spck Editor e digite o nome exato dele aqui (Ex: aviso.mp4):");
         if (!nomeArquivo) return;
 
         bancoStories.push({
@@ -1199,9 +1213,9 @@ function criarNovoStoryAtrav�sDeAdmin() {
         });
         localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
         carregarStoriesNaTela();
-        alert("V�deo publicado com sucesso!");
+        alert("Vídeo publicado com sucesso!");
     } else if (escolha !== null) {
-        alert("Op��o inv�lida! Digite FOTO ou VIDEO.");
+        alert("Opção inválida! Digite FOTO ou VIDEO.");
     }
 }
 
@@ -1241,7 +1255,7 @@ function abrirStoryPostado(index) {
             timeoutStoryAtivo = setTimeout(fecharStoryAtual, tempoDuracao);
         };
         video.onerror = function() {
-            alert("V�deo n�o encontrado. Verifique se o arquivo est� na pasta do Spck Editor com o mesmo nome.");
+            alert("Vídeo não encontrado. Verifique se o arquivo está na pasta do Spck Editor com o mesmo nome.");
             fecharStoryAtual();
         };
     } else {
@@ -1260,13 +1274,13 @@ function fecharStoryAtual() {
     // Esconde o modal na tela
     document.getElementById('modalVisualizarStory').style.display = "none";
     
-    // Zera e esvazia todo o conte�do de dentro da janela (faz o v�deo e o som pararem na hora!)
+    // Zera e esvazia todo o conteúdo de dentro da janela (faz o vídeo e o som pararem na hora!)
     const containerMidia = document.getElementById('containerMidiaStory');
     if (containerMidia) {
         containerMidia.innerHTML = "";
     }
     
-    // Cancela o cron�metro para n�o fechar o pr�ximo story antes da hora
+    // Cancela o cronômetro para não fechar o próximo story antes da hora
     clearTimeout(timeoutStoryAtivo);
 }
 
@@ -1274,10 +1288,11 @@ carregarStoriesNaTela();
 /*-----==FIM DOS STORIES======*/
     </script>
     <footer>
-        � 2026, todos os direitos reservados.
+        © 2026, todos os direitos reservados.
     </footer>
  
         
 
 </body>
 </html>
+         
