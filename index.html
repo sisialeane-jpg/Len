@@ -1243,37 +1243,37 @@ function criarNovoStoryAtravésDeAdmin() {
         return;
     }
 
-    const escolha = prompt("Escolha o que deseja postar:\nDigite FOTO para galeria\nDigite VIDEO para arquivo da pasta\nDigite TEXTO para criar um aviso").toUpperCase();
+    const escolha = prompt("Escolha o que deseja postar:\nDigite FOTO para arquivo da pasta\nDigite VIDEO para arquivo da pasta\nDigite TEXTO para criar um aviso").toUpperCase();
 
     if (escolha === "FOTO") {
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = 'image/*'; 
-        input.onchange = function(e) {
-            const arquivo = e.target.files[0];
-            if (!arquivo) return;
-            
-            // Pergunta o título para a foto
-            const tituloPost = prompt("Digite um título/legenda para esta foto (ou deixe em branco):");
+    // 1. Ao invés de abrir a galeria, abre uma caixa para digitar o nome da imagem
+    const nomeArquivo = prompt("Digite o nome exato da imagem que está no servidor (Ex: culto.jpg ou png):");
+    
+    // Se o usuário não digitou nada ou cancelou, interrompe o código
+    if (!nomeArquivo) return;
+    
+    // 2. Pergunta o título para a foto normalmente
+    const tituloPost = prompt("Digite um título/legenda para esta foto (ou deixe em branco):");
 
-            const leitor = new FileReader();
-            leitor.onload = function(evt) {
-                try {
-                    bancoStories.push({
-                        arquivo: evt.target.result,
-                        titulo: tituloPost,
-                        tipo: 'imagem',
-                        dataPostagem: new Date().getTime()
-                    });
-                    localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
-                    carregarStoriesNaTela();
-                } catch (err) {
-                    alert("A foto é muito pesada.");
-                }
-            };
-            leitor.readAsDataURL(arquivo);
-        };
-        input.click();
+    try {
+        // 3. Monta o caminho apontando para a sua pasta do servidor (ex: "storang/culto.jpg")
+        const caminhoDaImagem = "storang/" + nomeArquivo.trim();
+
+        bancoStories.push({
+            arquivo: caminhoDaImagem, // Salva o link da pasta + o nome digitado
+            titulo: tituloPost,
+            tipo: 'imagem',
+            dataPostagem: new Date().getTime()
+        });
+        
+        localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
+        carregarStoriesNaTela();
+        alert("Foto adicionada com sucesso!");
+        
+    } catch (err) {
+        alert("Ocorreu um erro ao salvar o story.");
+    }
+}
 
     } else if (escolha === "VIDEO") {
         const nomeArquivo = prompt("Mova o vídeo para a pasta no Spck Editor e digite o nome exato dele (Ex: aviso.mp4):");
