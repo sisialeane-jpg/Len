@@ -1196,12 +1196,12 @@ function carregarStoriesNaTela() {
     localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
 
     bancoStories.forEach((story, index) => {
-        // CORREÇÃO AQUI: Se for texto, o círculo ganha um fundo colorido em vez de procurar uma foto que mudou de pasta
         let capaHTML = '';
         if (story.tipo === 'texto') {
             capaHTML = `<div style="width:100%; height:100%; background:${story.fundo}; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:10px; font-weight:bold;">Texto</div>`;
         } else {
-            const capaUrl = (story.tipo === 'video') ? 'Culto/fotos01.jpg' : story.arquivo;
+            // CORREÇÃO: Garante que a capa do círculo puxe da pasta Culto/ de forma correta
+            const capaUrl = story.arquivo;
             capaHTML = `<img src="${capaUrl}" alt="Story">`;
         }
         
@@ -1243,45 +1243,44 @@ function criarNovoStoryAtravésDeAdmin() {
         return;
     }
 
-const escolha = prompt("Escolha o que deseja postar:\nDigite FOTO para arquivo da pasta\nDigite VIDEO para arquivo da pasta\nDigite TEXTO para criar um aviso").toUpperCase();
+    const escolha = prompt("Escolha o que deseja postar:\nDigite FOTO para arquivo da pasta\nDigite VIDEO para arquivo da pasta\nDigite TEXTO para criar um aviso").toUpperCase();
+    
     if (escolha === "FOTO") {
-    // 1. Ao invés de abrir a galeria, abre uma caixa para digitar o nome da imagem
-    const nomeArquivo = prompt("Digite o nome exato da imagem que está no servidor (Ex: culto.jpg ou png):");
-    
-    // Se o usuário não digitou nada ou cancelou, interrompe o código
-    if (!nomeArquivo) return;
-    
-    // 2. Pergunta o título para a foto normalmente
-    const tituloPost = prompt("Digite um título/legenda para esta foto (ou deixe em branco):");
-
-    try {
-        // 3. Monta o caminho apontando para a sua pasta do servidor (ex: "storang/culto.jpg")
-        const caminhoDaImagem = "storang/" + nomeArquivo.trim();
-
-        bancoStories.push({
-            arquivo: caminhoDaImagem, // Salva o link da pasta + o nome digitado
-            titulo: tituloPost,
-            tipo: 'imagem',
-            dataPostagem: new Date().getTime()
-        });
+        const nomeArquivo = prompt("Digite o nome exato da imagem que está no servidor (Ex: culto.jpg ou png):");
+        if (!nomeArquivo) return;
         
-        localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
-        carregarStoriesNaTela();
-        alert("Foto adicionada com sucesso!");
-        
-    } catch (err) {
-        alert("Ocorreu um erro ao salvar o story.");
+        const tituloPost = prompt("Digite um título/legenda para esta foto (ou deixe em branco):");
+
+        try {
+            // CORREÇÃO: Mudado de "storang/" para "Culto/" para bater com suas pastas do GitHub
+            const caminhoDaImagem = "Culto/" + nomeArquivo.trim();
+
+            bancoStories.push({
+                arquivo: caminhoDaImagem, 
+                titulo: tituloPost,
+                tipo: 'imagem',
+                dataPostagem: new Date().getTime()
+            });
+            
+            localStorage.setItem('stories_igreja', JSON.stringify(bancoStories));
+            carregarStoriesNaTela();
+            alert("Foto adicionada com sucesso!");
+            
+        } catch (err) {
+            alert("Ocorreu um erro ao salvar o story.");
+        }
     }
-}
     else if (escolha === "VIDEO") {
         const nomeArquivo = prompt("Mova o vídeo para a pasta no Spck Editor e digite o nome exato dele (Ex: aviso.mp4):");
         if (!nomeArquivo) return;
 
-        // Pergunta o título para o vídeo
         const tituloPost = prompt("Digite o título que aparecerá escrito por cima do vídeo:");
 
+        // CORREÇÃO: Garante que o vídeo também seja salvo puxando da pasta correta "Culto/"
+        const caminhoDoVideo = "Culto/" + nomeArquivo.trim();
+
         bancoStories.push({
-            arquivo: nomeArquivo,
+            arquivo: caminhoDoVideo,
             titulo: tituloPost,
             tipo: 'video',
             dataPostagem: new Date().getTime()
@@ -1341,7 +1340,6 @@ function abrirStoryPostado(index) {
         video.playsInline = true;
         containerMidia.appendChild(video);
 
-        // Se houver título salvo, cria o elemento na tela por cima do vídeo
         if (story.titulo) {
             const divLegenda = document.createElement('div');
             divLegenda.className = "story-legenda";
@@ -1376,7 +1374,6 @@ function abrirStoryPostado(index) {
         img.className = "story-midia";
         containerMidia.appendChild(img);
 
-        // Se a foto tiver título salvo, exibe por cima também!
         if (story.titulo) {
             const divLegenda = document.createElement('div');
             divLegenda.className = "story-legenda";
