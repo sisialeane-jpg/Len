@@ -1243,8 +1243,7 @@ function criarNovoStoryAtravésDeAdmin() {
         return;
     }
 
-    const escolha = prompt("Escolha o que deseja postar:\nDigite FOTO para arquivo da pasta\nDigite VIDEO para arquivo da pasta\nDigite TEXTO para criar um aviso").toUpperCase();
-
+const escolha = prompt("Escolha o que deseja postar:\nDigite FOTO para arquivo da pasta\nDigite VIDEO para arquivo da pasta\nDigite TEXTO para criar um aviso").toUpperCase();
     if (escolha === "FOTO") {
     // 1. Ao invés de abrir a galeria, abre uma caixa para digitar o nome da imagem
     const nomeArquivo = prompt("Digite o nome exato da imagem que está no servidor (Ex: culto.jpg ou png):");
@@ -1274,8 +1273,7 @@ function criarNovoStoryAtravésDeAdmin() {
         alert("Ocorreu um erro ao salvar o story.");
     }
 }
-
-    } else if (escolha === "VIDEO") {
+    else if (escolha === "VIDEO") {
         const nomeArquivo = prompt("Mova o vídeo para a pasta no Spck Editor e digite o nome exato dele (Ex: aviso.mp4):");
         if (!nomeArquivo) return;
 
