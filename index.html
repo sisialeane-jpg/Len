@@ -1177,7 +1177,7 @@ setInterval(function() {
  
  
 /*-----=========STORIES===========---->*/
-const SENHA_ADMIN = "1234"; 
+    const SENHA_ADMIN = "1234"; 
 let bancoStories = JSON.parse(localStorage.getItem('stories_igreja')) || [];
 let timeoutStoryAtivo;
 let toqueTimer; 
@@ -1253,7 +1253,7 @@ function criarNovoStoryAtravésDeAdmin() {
 
         try {
             // CORREÇÃO: Mudado de "storang/" para "Culto/" para bater com suas pastas do GitHub
-            const caminhoDaImagem = "Culto/" + nomeArquivo.trim();
+            const caminhoDaImagem = "Stories/" + nomeArquivo.trim();
 
             bancoStories.push({
                 arquivo: caminhoDaImagem, 
@@ -1277,7 +1277,7 @@ function criarNovoStoryAtravésDeAdmin() {
         const tituloPost = prompt("Digite o título que aparecerá escrito por cima do vídeo:");
 
         // CORREÇÃO: Garante que o vídeo também seja salvo puxando da pasta correta "Culto/"
-        const caminhoDoVideo = "Culto/" + nomeArquivo.trim();
+        const caminhoDoVideo = "Stories/" + nomeArquivo.trim();
 
         bancoStories.push({
             arquivo: caminhoDoVideo,
