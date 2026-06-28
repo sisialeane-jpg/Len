@@ -1423,9 +1423,9 @@ function mostrarVersiculoAleatorio() {
 window.addEventListener('DOMContentLoaded', mostrarVersiculoAleatorio);
 /*========FINAL VERSÍCULOS==============*/
     /*===========LIKES============*/
-// ========================================================
-// 1. FUNÇÃO QUE ABRE E MOSTRA O STORY NA TELA
-// ========================================================
+/* ========================================================
+ 1. FUNÇÃO QUE ABRE E MOSTRA O STORY NA TELA
+ ========================================================*/
 function abrirStory(index) {
     // Pega o story atual usando a variável que você já tem no seu projeto
     let story = listaStories[index]; 
@@ -1468,9 +1468,9 @@ function abrirStory(index) {
     document.getElementById('modal-stories').innerHTML = conteudoHTML;
 }
 
-// ========================================================
-// 2. FUNÇÃO QUE FAZ A CONTAGEM DOS LIKES AO CLICAR
-// ========================================================
+/*========================================================
+ 2. FUNÇÃO QUE FAZ A CONTAGEM DOS LIKES AO CLICAR
+========================================================*/
 function curtirVideo(index, botao) {
     // Impede o clique de fechar ou pausar o story de fundo
     event.stopPropagation();
