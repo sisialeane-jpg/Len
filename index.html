@@ -1423,36 +1423,76 @@ function mostrarVersiculoAleatorio() {
 window.addEventListener('DOMContentLoaded', mostrarVersiculoAleatorio);
 /*========FINAL VERSÍCULOS==============*/
     /*===========LIKES============*/
-    // A sua função que abre o story deve ser algo assim:
+// ========================================================
+// 1. FUNÇÃO QUE ABRE E MOSTRA O STORY NA TELA
+// ========================================================
 function abrirStory(index) {
-    let story = listaStories[index]; // Pega o story atual
+    // Pega o story atual usando a variável que você já tem no seu projeto
+    let story = listaStories[index]; 
     let conteudoHTML = '';
 
-    // O "IF" do vídeo fica bem aqui dentro:
-    if (story.tipo === 'video') {
+    // Verifica se é vídeo pelo tipo OU se o link do arquivo contém ".mp4"
+    if (story.tipo === 'video' || story.arquivo.includes('.mp4')) {
+        
+        // Pega os likes gravados no celular do usuário (se não tiver, começa em 0)
         let totalLikes = localStorage.getItem(`likes_story_${index}`) || 0;
 
         conteudoHTML = `
-            <div style="position: relative; width: 100%; height: 100%;">
+            <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #000;">
+                <!-- Vídeo do Story -->
                 <video src="${story.arquivo}" autoplay style="width: 100%; height: 100%; object-fit: cover;"></video>
                 
-                <div style="position: absolute; bottom: 50px; right: 20px; display: flex; flex-direction: column; align-items: center; gap: 5px;">
-                    <button onclick="curtirVideo(${index}, this)" style="background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: white; cursor: pointer; backdrop-filter: blur(5px); transition: transform 0.2s;">
-                        ❤️
+                <!-- CONTAINER DO BOTÃO DO CORAÇÃO PNG -->
+                <div style="position: absolute; bottom: 70px; right: 20px; display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 99999;">
+                    <button onclick="curtirVideo(${index}, this)" style="background: rgba(0,0,0,0.5); border: none; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); transition: transform 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                        <!-- O coração vazado do seu print (Screenshot_20260627-221632.jpg) -->
+                        <img id="img-coracao-${index}" src="coracao.png" alt="Curtir" style="width: 26px; height: 26px; object-fit: contain;">
                     </button>
-                    <span id="contador-likes-${index}" style="color: white; font-size: 14px; font-weight: bold; background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 10px;">
+                    <!-- Contador de pessoas que deram like -->
+                    <span id="contador-likes-${index}" style="color: white; font-size: 13px; font-weight: bold; font-family: sans-serif; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 10px;">
                         ${totalLikes}
                     </span>
                 </div>
             </div>
         `;
     } else {
-        // Aqui costuma ficar o código caso o story seja uma FOTO (imagem)
+        // Se for uma foto comum, roda o código padrão abaixo:
+        conteudoHTML = `
+            <div style="width: 100%; height: 100%; background: #000;">
+                <img src="${story.arquivo}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        `;
     }
 
-    // Depois ele joga o conteúdoHTML dentro da caixinha (modal) da tela
-    document.getElementById('conteudo-do-modal').innerHTML = conteudoHTML;
-    }
+    // Renderiza o HTML dentro do seu modal de exibição
+    document.getElementById('modal-stories').innerHTML = conteudoHTML;
+}
+
+// ========================================================
+// 2. FUNÇÃO QUE FAZ A CONTAGEM DOS LIKES AO CLICAR
+// ========================================================
+function curtirVideo(index, botao) {
+    // Impede o clique de fechar ou pausar o story de fundo
+    event.stopPropagation();
+
+    // Efeito de pulo (animação) no botão ao clicar
+    botao.style.transform = "scale(1.2)";
+    setTimeout(() => { botao.style.transform = "scale(1)"; }, 200);
+
+    // Pega a quantidade de likes na memória, soma +1 e salva de volta
+    let atualLikes = parseInt(localStorage.getItem(`likes_story_${index}`)) || 0;
+    let novoTotal = atualLikes + 1;
+    localStorage.setItem(`likes_story_${index}`, novoTotal);
+    
+    // Atualiza o número do contador na tela na mesma hora
+    document.getElementById(`contador-likes-${index}`).innerText = novoTotal;
+
+    // Feedback visual: O círculo do botão acende em vermelho por um instante
+    botao.style.backgroundColor = "#e53e3e"; 
+    setTimeout(() => {
+        botao.style.backgroundColor = "rgba(0,0,0,0.5)";
+    }, 600);
+}
     /*===============FIMM========*/
     </script>
     <footer>
