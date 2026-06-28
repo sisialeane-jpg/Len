@@ -1422,6 +1422,38 @@ function mostrarVersiculoAleatorio() {
 // Executa a função assim que a página termina de carregar
 window.addEventListener('DOMContentLoaded', mostrarVersiculoAleatorio);
 /*========FINAL VERSÍCULOS==============*/
+    /*===========LIKES============*/
+    // A sua função que abre o story deve ser algo assim:
+function abrirStory(index) {
+    let story = listaStories[index]; // Pega o story atual
+    let conteudoHTML = '';
+
+    // O "IF" do vídeo fica bem aqui dentro:
+    if (story.tipo === 'video') {
+        let totalLikes = localStorage.getItem(`likes_story_${index}`) || 0;
+
+        conteudoHTML = `
+            <div style="position: relative; width: 100%; height: 100%;">
+                <video src="${story.arquivo}" autoplay style="width: 100%; height: 100%; object-fit: cover;"></video>
+                
+                <div style="position: absolute; bottom: 50px; right: 20px; display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                    <button onclick="curtirVideo(${index}, this)" style="background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: white; cursor: pointer; backdrop-filter: blur(5px); transition: transform 0.2s;">
+                        ❤️
+                    </button>
+                    <span id="contador-likes-${index}" style="color: white; font-size: 14px; font-weight: bold; background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 10px;">
+                        ${totalLikes}
+                    </span>
+                </div>
+            </div>
+        `;
+    } else {
+        // Aqui costuma ficar o código caso o story seja uma FOTO (imagem)
+    }
+
+    // Depois ele joga o conteúdoHTML dentro da caixinha (modal) da tela
+    document.getElementById('conteudo-do-modal').innerHTML = conteudoHTML;
+    }
+    /*===============FIMM========*/
     </script>
     <footer>
         © 2026, todos os direitos reservados.
